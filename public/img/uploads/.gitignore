@@ -1,0 +1,10 @@
+*
+!.gitignore
+
+cursos/*
+
+material-apoyo/documentos/*
+
+organizaciones/videos/*
+
+organizaciones/imagenes/*

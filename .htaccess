@@ -1,0 +1,12 @@
+# Disallow access to sensitive files
+<FilesMatch "^(composer\.(json|lock)|\.env|\.git)">
+	Order allow,deny
+	Deny from all
+</FilesMatch>
+
+# Disallow directory browsing
+Options -Indexes
+
+
+
+

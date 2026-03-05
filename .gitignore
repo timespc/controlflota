@@ -1,0 +1,36 @@
+# CodeIgniter 4
+.env
+.env.*
+!.env.example
+/vendor/
+/writable/cache/*
+!/writable/cache/index.html
+!/writable/cache/.gitignore
+/writable/logs/*
+!/writable/logs/index.html
+!/writable/logs/.gitignore
+/writable/session/*
+!/writable/session/index.html
+!/writable/session/.gitignore
+/writable/uploads/*
+!/writable/uploads/index.html
+!/writable/uploads/.gitignore
+/writable/debugbar/*
+!/writable/debugbar/.gitignore
+
+# Cursor: planes y reglas locales (no se suben al repo; quedan solo en tu máquina)
+.cursor/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# PHP / tests
+.phpunit.result.cache
+phpunit.xml
+
+# SQL u otros backups locales (opcional; quitar si querés versionarlos)
+# *.sql

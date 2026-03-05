@@ -1,0 +1,64 @@
+{
+    "name": "montajes-campana/app",
+    "type": "project",
+    "description": "Sistema de gestión de montajes y calibraciones",
+    "homepage": "https://codeigniter.com",
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "codeigniter4/framework": "4.5.3",
+        "benedmunds/codeigniter-ion-auth": "4.x-dev",
+        "google/apiclient": "^2.0",
+        "guzzlehttp/guzzle": "7.5.*@dev",
+        "phpoffice/phpspreadsheet": "^1.23",
+        "ext-gd": "*",
+        "kint-php/kint": "^5.0.1",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "laminas/laminas-escaper": "^2.13",
+        "psr/log": "^3.0",
+        "dompdf/dompdf": "dev-master"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9",
+        "mikey179/vfsstream": "^1.6",
+        "codeigniter/coding-standard": "^1.7",
+        "friendsofphp/php-cs-fixer": "^3.47.1",
+        "kint-php/kint": "^5.0.4",
+        "nexusphp/cs-config": "^3.6",
+        "phpunit/phpunit": "^10.5.16",
+        "predis/predis": "^1.1 || ^2.0"
+    },
+    "suggest": {
+        "ext-fileinfo": "Improves mime type detection for files"
+    },
+    "autoload": {
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodeIgniter\\": "system/",
+            "Tests\\": "tests/"
+        },
+        "exclude-from-classmap": [
+            "**/Database/Migrations/**"
+        ]
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "support": {
+        "forum": "http://forum.codeigniter.com/",
+        "source": "https://github.com/codeigniter4/CodeIgniter4",
+        "slack": "https://codeigniterchat.slack.com"
+    },
+    "minimum-stability": "dev",
+    "repositories": {
+        "ionAuth": {
+            "type": "vcs",
+            "url": "https://github.com/benedmunds/CodeIgniter-Ion-Auth.git"
+        }
+    }
+}

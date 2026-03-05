@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\wamp64\www\montajes-campana\app\Database</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../_css/bootstrap.min.css?v=10.1.16-25-g11775ba4" rel="stylesheet" type="text/css">
+  <link href="../_css/nv.d3.min.css?v=10.1.16-25-g11775ba4" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css?v=10.1.16-25-g11775ba4" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">C:\wamp64\www\montajes-campana\app</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Database</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Migrations/2026-01-07-152436_Transportistas.php.html#7">App\Database\Migrations\Transportistas</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173137_Paises.php.html#7">App\Database\Migrations\Paises</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173138_PaisesProvincias.php.html#7">App\Database\Migrations\PaisesProvincias</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173301_AddPaisProvinciaToTransportistas.php.html#7">App\Database\Migrations\AddPaisProvinciaToTransportistas</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-174619_Equipos.php.html#7">App\Database\Migrations\Equipos</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-175508_AddChecklistToEquipos.php.html#7">App\Database\Migrations\AddChecklistToEquipos</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-20-142654_Unidades.php.html#7">App\Database\Migrations\Unidades</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-120000_Banderas.php.html#7">App\Database\Migrations\Banderas</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-150000_Calibradores.php.html#7">App\Database\Migrations\Calibradores</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-160000_Marcas.php.html#7">App\Database\Migrations\Marcas</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-170000_Naciones.php.html#7">App\Database\Migrations\Naciones</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-180000_Cubiertas.php.html#7">App\Database\Migrations\Cubiertas</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-190000_FixTipoUnidadSemToSemi.php.html#11">App\Database\Migrations\FixTipoUnidadSemToSemi</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-200000_Calibraciones.php.html#7">App\Database\Migrations\Calibraciones</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-210000_AddCamposCalibracionesYDetalle.php.html#7">App\Database\Migrations\AddCamposCalibracionesYDetalle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-220000_TokenPublicoYAccesosCalibracion.php.html#7">App\Database\Migrations\TokenPublicoYAccesosCalibracion</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-230000_BackfillTokenPublicoCalibraciones.php.html#11">App\Database\Migrations\BackfillTokenPublicoCalibraciones</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-240000_RolesYUsuarios.php.html#7">App\Database\Migrations\RolesYUsuarios</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-250000_EstadoUsuariosYNotificaciones.php.html#7">App\Database\Migrations\EstadoUsuariosYNotificaciones</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-260000_ConfigNotificacionesAdmin.php.html#10">App\Database\Migrations\ConfigNotificacionesAdmin</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-270000_DropWhatsAppFromNotificacionConfig.php.html#10">App\Database\Migrations\DropWhatsAppFromNotificacionConfig</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-290000_IonAuthTables.php.html#11">App\Database\Migrations\IonAuthTables</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-300000_AddDiasAvisoVencimiento.php.html#10">App\Database\Migrations\AddDiasAvisoVencimiento</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-120000_CalibracionMultiflecha.php.html#12">App\Database\Migrations\CalibracionMultiflecha</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-120000_MarcasSensor.php.html#7">App\Database\Migrations\MarcasSensor</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-150000_UnidadesBitrenYCamposEquipo.php.html#12">App\Database\Migrations\UnidadesBitrenYCamposEquipo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-160000_DropEquiposYIdEquipoEnUnidades.php.html#11">App\Database\Migrations\DropEquiposYIdEquipoEnUnidades</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-170000_AddTransporteToUnidades.php.html#10">App\Database\Migrations\AddTransporteToUnidades</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-180000_ModoCargaEnumUnidades.php.html#11">App\Database\Migrations\ModoCargaEnumUnidades</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-190000_DropTransporteFromUnidades.php.html#11">App\Database\Migrations\DropTransporteFromUnidades</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-200000_AddSemiDelanteraPbtToUnidades.php.html#11">App\Database\Migrations\AddSemiDelanteraPbtToUnidades</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-210000_AddPaisNacionToUnidades.php.html#11">App\Database\Migrations\AddPaisNacionToUnidades</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-220000_AddEjesCubiertasSemiTraseroUnidades.php.html#10">App\Database\Migrations\AddEjesCubiertasSemiTraseroUnidades</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-230000_Reglas.php.html#7">App\Database\Migrations\Reglas</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-240000_AddImpresionCalibraciones.php.html#7">App\Database\Migrations\AddImpresionCalibraciones</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-250000_CalibracionReimpresiones.php.html#7">App\Database\Migrations\CalibracionReimpresiones</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-260000_AddIdCalibracionReemplazo.php.html#7">App\Database\Migrations\AddIdCalibracionReemplazo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-270000_ParametrosSistema.php.html#10">App\Database\Migrations\ParametrosSistema</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-280000_CalibracionNotas.php.html#11">App\Database\Migrations\CalibracionNotas</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-290000_AddNumeroSemiDetalleYMultiflecha.php.html#13">App\Database\Migrations\AddNumeroSemiDetalleYMultiflecha</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-310000_AddIdUsuarioCreacionReglas.php.html#7">App\Database\Migrations\AddIdUsuarioCreacionReglas</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-09-100000_CalibracionInformeCargaSegura.php.html#7">App\Database\Migrations\CalibracionInformeCargaSegura</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-100000_AddCuitToTransportistas.php.html#7">App\Database\Migrations\AddCuitToTransportistas</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-110000_AddNotaPosicionSensoresInforme.php.html#7">App\Database\Migrations\AddNotaPosicionSensoresInforme</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026_02_14_100000_AddGroupCalibrador.php.html#11">App\Database\Migrations\AddGroupCalibrador</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026_02_17_100000_DocumentosTransportistasUnidades.php.html#10">App\Database\Migrations\DocumentosTransportistasUnidades</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Seeds/AgregarUsuarioFranSeeder.php.html#11">App\Database\Seeds\AgregarUsuarioFranSeeder</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Seeds/IonAuthSeeder.php.html#10">App\Database\Seeds\IonAuthSeeder</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Seeds/PaisesProvinciasSeeder.php.html#7">App\Database\Seeds\PaisesProvinciasSeeder</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Migrations/2026-02-06-290000_AddNumeroSemiDetalleYMultiflecha.php.html#13">App\Database\Migrations\AddNumeroSemiDetalleYMultiflecha</a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173138_PaisesProvincias.php.html#7">App\Database\Migrations\PaisesProvincias</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-250000_EstadoUsuariosYNotificaciones.php.html#7">App\Database\Migrations\EstadoUsuariosYNotificaciones</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Seeds/PaisesProvinciasSeeder.php.html#7">App\Database\Seeds\PaisesProvinciasSeeder</a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-210000_AddCamposCalibracionesYDetalle.php.html#7">App\Database\Migrations\AddCamposCalibracionesYDetalle</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-270000_DropWhatsAppFromNotificacionConfig.php.html#10">App\Database\Migrations\DropWhatsAppFromNotificacionConfig</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-240000_AddImpresionCalibraciones.php.html#7">App\Database\Migrations\AddImpresionCalibraciones</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-220000_TokenPublicoYAccesosCalibracion.php.html#7">App\Database\Migrations\TokenPublicoYAccesosCalibracion</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-260000_ConfigNotificacionesAdmin.php.html#10">App\Database\Migrations\ConfigNotificacionesAdmin</a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-175508_AddChecklistToEquipos.php.html#7">App\Database\Migrations\AddChecklistToEquipos</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-220000_AddEjesCubiertasSemiTraseroUnidades.php.html#10">App\Database\Migrations\AddEjesCubiertasSemiTraseroUnidades</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-310000_AddIdUsuarioCreacionReglas.php.html#7">App\Database\Migrations\AddIdUsuarioCreacionReglas</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Migrations/2026-02-09-100000_CalibracionInformeCargaSegura.php.html#7">App\Database\Migrations\CalibracionInformeCargaSegura</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-190000_FixTipoUnidadSemToSemi.php.html#11">App\Database\Migrations\FixTipoUnidadSemToSemi</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-240000_RolesYUsuarios.php.html#7">App\Database\Migrations\RolesYUsuarios</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-300000_AddDiasAvisoVencimiento.php.html#10">App\Database\Migrations\AddDiasAvisoVencimiento</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-210000_AddPaisNacionToUnidades.php.html#11">App\Database\Migrations\AddPaisNacionToUnidades</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-100000_AddCuitToTransportistas.php.html#7">App\Database\Migrations\AddCuitToTransportistas</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-110000_AddNotaPosicionSensoresInforme.php.html#7">App\Database\Migrations\AddNotaPosicionSensoresInforme</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Migrations/2026_02_14_100000_AddGroupCalibrador.php.html#11">App\Database\Migrations\AddGroupCalibrador</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173301_AddPaisProvinciaToTransportistas.php.html#7">App\Database\Migrations\AddPaisProvinciaToTransportistas</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-230000_BackfillTokenPublicoCalibraciones.php.html#11">App\Database\Migrations\BackfillTokenPublicoCalibraciones</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-160000_DropEquiposYIdEquipoEnUnidades.php.html#11">App\Database\Migrations\DropEquiposYIdEquipoEnUnidades</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-280000_CalibracionNotas.php.html#11">App\Database\Migrations\CalibracionNotas</a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Migrations/2026-01-20-142654_Unidades.php.html#7">App\Database\Migrations\Unidades</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-200000_Calibraciones.php.html#7">App\Database\Migrations\Calibraciones</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-290000_IonAuthTables.php.html#11">App\Database\Migrations\IonAuthTables</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-170000_AddTransporteToUnidades.php.html#10">App\Database\Migrations\AddTransporteToUnidades</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-190000_DropTransporteFromUnidades.php.html#11">App\Database\Migrations\DropTransporteFromUnidades</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-200000_AddSemiDelanteraPbtToUnidades.php.html#11">App\Database\Migrations\AddSemiDelanteraPbtToUnidades</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-250000_CalibracionReimpresiones.php.html#7">App\Database\Migrations\CalibracionReimpresiones</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-120000_CalibracionMultiflecha.php.html#12">App\Database\Migrations\CalibracionMultiflecha</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Seeds/AgregarUsuarioFranSeeder.php.html#11">App\Database\Seeds\AgregarUsuarioFranSeeder</a></td><td class="text-right">12</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Migrations/2026-01-07-152436_Transportistas.php.html#9"><abbr title="App\Database\Migrations\Transportistas::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-152436_Transportistas.php.html#93"><abbr title="App\Database\Migrations\Transportistas::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173137_Paises.php.html#9"><abbr title="App\Database\Migrations\Paises::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173137_Paises.php.html#55"><abbr title="App\Database\Migrations\Paises::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173138_PaisesProvincias.php.html#9"><abbr title="App\Database\Migrations\PaisesProvincias::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173138_PaisesProvincias.php.html#164"><abbr title="App\Database\Migrations\PaisesProvincias::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173301_AddPaisProvinciaToTransportistas.php.html#9"><abbr title="App\Database\Migrations\AddPaisProvinciaToTransportistas::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173301_AddPaisProvinciaToTransportistas.php.html#38"><abbr title="App\Database\Migrations\AddPaisProvinciaToTransportistas::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-174619_Equipos.php.html#9"><abbr title="App\Database\Migrations\Equipos::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-174619_Equipos.php.html#191"><abbr title="App\Database\Migrations\Equipos::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-175508_AddChecklistToEquipos.php.html#9"><abbr title="App\Database\Migrations\AddChecklistToEquipos::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-175508_AddChecklistToEquipos.php.html#47"><abbr title="App\Database\Migrations\AddChecklistToEquipos::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-20-142654_Unidades.php.html#9"><abbr title="App\Database\Migrations\Unidades::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-20-142654_Unidades.php.html#179"><abbr title="App\Database\Migrations\Unidades::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-120000_Banderas.php.html#9"><abbr title="App\Database\Migrations\Banderas::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-120000_Banderas.php.html#37"><abbr title="App\Database\Migrations\Banderas::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-150000_Calibradores.php.html#9"><abbr title="App\Database\Migrations\Calibradores::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-150000_Calibradores.php.html#37"><abbr title="App\Database\Migrations\Calibradores::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-160000_Marcas.php.html#9"><abbr title="App\Database\Migrations\Marcas::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-160000_Marcas.php.html#37"><abbr title="App\Database\Migrations\Marcas::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-170000_Naciones.php.html#9"><abbr title="App\Database\Migrations\Naciones::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-170000_Naciones.php.html#37"><abbr title="App\Database\Migrations\Naciones::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-180000_Cubiertas.php.html#9"><abbr title="App\Database\Migrations\Cubiertas::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-180000_Cubiertas.php.html#38"><abbr title="App\Database\Migrations\Cubiertas::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-190000_FixTipoUnidadSemToSemi.php.html#13"><abbr title="App\Database\Migrations\FixTipoUnidadSemToSemi::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-190000_FixTipoUnidadSemToSemi.php.html#30"><abbr title="App\Database\Migrations\FixTipoUnidadSemToSemi::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-200000_Calibraciones.php.html#9"><abbr title="App\Database\Migrations\Calibraciones::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-200000_Calibraciones.php.html#74"><abbr title="App\Database\Migrations\Calibraciones::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-210000_AddCamposCalibracionesYDetalle.php.html#9"><abbr title="App\Database\Migrations\AddCamposCalibracionesYDetalle::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-210000_AddCamposCalibracionesYDetalle.php.html#143"><abbr title="App\Database\Migrations\AddCamposCalibracionesYDetalle::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-220000_TokenPublicoYAccesosCalibracion.php.html#9"><abbr title="App\Database\Migrations\TokenPublicoYAccesosCalibracion::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-220000_TokenPublicoYAccesosCalibracion.php.html#42"><abbr title="App\Database\Migrations\TokenPublicoYAccesosCalibracion::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-230000_BackfillTokenPublicoCalibraciones.php.html#13"><abbr title="App\Database\Migrations\BackfillTokenPublicoCalibraciones::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-230000_BackfillTokenPublicoCalibraciones.php.html#29"><abbr title="App\Database\Migrations\BackfillTokenPublicoCalibraciones::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-240000_RolesYUsuarios.php.html#9"><abbr title="App\Database\Migrations\RolesYUsuarios::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-240000_RolesYUsuarios.php.html#48"><abbr title="App\Database\Migrations\RolesYUsuarios::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-250000_EstadoUsuariosYNotificaciones.php.html#9"><abbr title="App\Database\Migrations\EstadoUsuariosYNotificaciones::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-250000_EstadoUsuariosYNotificaciones.php.html#48"><abbr title="App\Database\Migrations\EstadoUsuariosYNotificaciones::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-260000_ConfigNotificacionesAdmin.php.html#12"><abbr title="App\Database\Migrations\ConfigNotificacionesAdmin::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-260000_ConfigNotificacionesAdmin.php.html#57"><abbr title="App\Database\Migrations\ConfigNotificacionesAdmin::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-270000_DropWhatsAppFromNotificacionConfig.php.html#12"><abbr title="App\Database\Migrations\DropWhatsAppFromNotificacionConfig::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-270000_DropWhatsAppFromNotificacionConfig.php.html#25"><abbr title="App\Database\Migrations\DropWhatsAppFromNotificacionConfig::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-290000_IonAuthTables.php.html#15"><abbr title="App\Database\Migrations\IonAuthTables::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-290000_IonAuthTables.php.html#23"><abbr title="App\Database\Migrations\IonAuthTables::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-290000_IonAuthTables.php.html#85"><abbr title="App\Database\Migrations\IonAuthTables::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-300000_AddDiasAvisoVencimiento.php.html#12"><abbr title="App\Database\Migrations\AddDiasAvisoVencimiento::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-300000_AddDiasAvisoVencimiento.php.html#31"><abbr title="App\Database\Migrations\AddDiasAvisoVencimiento::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-120000_CalibracionMultiflecha.php.html#14"><abbr title="App\Database\Migrations\CalibracionMultiflecha::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-120000_CalibracionMultiflecha.php.html#92"><abbr title="App\Database\Migrations\CalibracionMultiflecha::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-120000_MarcasSensor.php.html#9"><abbr title="App\Database\Migrations\MarcasSensor::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-120000_MarcasSensor.php.html#37"><abbr title="App\Database\Migrations\MarcasSensor::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-150000_UnidadesBitrenYCamposEquipo.php.html#14"><abbr title="App\Database\Migrations\UnidadesBitrenYCamposEquipo::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-150000_UnidadesBitrenYCamposEquipo.php.html#103"><abbr title="App\Database\Migrations\UnidadesBitrenYCamposEquipo::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-160000_DropEquiposYIdEquipoEnUnidades.php.html#13"><abbr title="App\Database\Migrations\DropEquiposYIdEquipoEnUnidades::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-160000_DropEquiposYIdEquipoEnUnidades.php.html#27"><abbr title="App\Database\Migrations\DropEquiposYIdEquipoEnUnidades::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-170000_AddTransporteToUnidades.php.html#12"><abbr title="App\Database\Migrations\AddTransporteToUnidades::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-170000_AddTransporteToUnidades.php.html#26"><abbr title="App\Database\Migrations\AddTransporteToUnidades::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-180000_ModoCargaEnumUnidades.php.html#15"><abbr title="App\Database\Migrations\ModoCargaEnumUnidades::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-180000_ModoCargaEnumUnidades.php.html#21"><abbr title="App\Database\Migrations\ModoCargaEnumUnidades::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-190000_DropTransporteFromUnidades.php.html#13"><abbr title="App\Database\Migrations\DropTransporteFromUnidades::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-190000_DropTransporteFromUnidades.php.html#20"><abbr title="App\Database\Migrations\DropTransporteFromUnidades::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-200000_AddSemiDelanteraPbtToUnidades.php.html#13"><abbr title="App\Database\Migrations\AddSemiDelanteraPbtToUnidades::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-200000_AddSemiDelanteraPbtToUnidades.php.html#27"><abbr title="App\Database\Migrations\AddSemiDelanteraPbtToUnidades::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-210000_AddPaisNacionToUnidades.php.html#13"><abbr title="App\Database\Migrations\AddPaisNacionToUnidades::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-210000_AddPaisNacionToUnidades.php.html#38"><abbr title="App\Database\Migrations\AddPaisNacionToUnidades::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-220000_AddEjesCubiertasSemiTraseroUnidades.php.html#12"><abbr title="App\Database\Migrations\AddEjesCubiertasSemiTraseroUnidades::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-220000_AddEjesCubiertasSemiTraseroUnidades.php.html#44"><abbr title="App\Database\Migrations\AddEjesCubiertasSemiTraseroUnidades::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-230000_Reglas.php.html#9"><abbr title="App\Database\Migrations\Reglas::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-230000_Reglas.php.html#46"><abbr title="App\Database\Migrations\Reglas::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-240000_AddImpresionCalibraciones.php.html#9"><abbr title="App\Database\Migrations\AddImpresionCalibraciones::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-240000_AddImpresionCalibraciones.php.html#41"><abbr title="App\Database\Migrations\AddImpresionCalibraciones::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-250000_CalibracionReimpresiones.php.html#9"><abbr title="App\Database\Migrations\CalibracionReimpresiones::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-250000_CalibracionReimpresiones.php.html#59"><abbr title="App\Database\Migrations\CalibracionReimpresiones::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-260000_AddIdCalibracionReemplazo.php.html#9"><abbr title="App\Database\Migrations\AddIdCalibracionReemplazo::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-260000_AddIdCalibracionReemplazo.php.html#26"><abbr title="App\Database\Migrations\AddIdCalibracionReemplazo::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-270000_ParametrosSistema.php.html#12"><abbr title="App\Database\Migrations\ParametrosSistema::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-270000_ParametrosSistema.php.html#35"><abbr title="App\Database\Migrations\ParametrosSistema::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-280000_CalibracionNotas.php.html#13"><abbr title="App\Database\Migrations\CalibracionNotas::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-280000_CalibracionNotas.php.html#56"><abbr title="App\Database\Migrations\CalibracionNotas::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-290000_AddNumeroSemiDetalleYMultiflecha.php.html#15"><abbr title="App\Database\Migrations\AddNumeroSemiDetalleYMultiflecha::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-290000_AddNumeroSemiDetalleYMultiflecha.php.html#70"><abbr title="App\Database\Migrations\AddNumeroSemiDetalleYMultiflecha::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-310000_AddIdUsuarioCreacionReglas.php.html#9"><abbr title="App\Database\Migrations\AddIdUsuarioCreacionReglas::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-310000_AddIdUsuarioCreacionReglas.php.html#31"><abbr title="App\Database\Migrations\AddIdUsuarioCreacionReglas::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-09-100000_CalibracionInformeCargaSegura.php.html#9"><abbr title="App\Database\Migrations\CalibracionInformeCargaSegura::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-09-100000_CalibracionInformeCargaSegura.php.html#104"><abbr title="App\Database\Migrations\CalibracionInformeCargaSegura::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-100000_AddCuitToTransportistas.php.html#9"><abbr title="App\Database\Migrations\AddCuitToTransportistas::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-100000_AddCuitToTransportistas.php.html#26"><abbr title="App\Database\Migrations\AddCuitToTransportistas::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-110000_AddNotaPosicionSensoresInforme.php.html#9"><abbr title="App\Database\Migrations\AddNotaPosicionSensoresInforme::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-110000_AddNotaPosicionSensoresInforme.php.html#26"><abbr title="App\Database\Migrations\AddNotaPosicionSensoresInforme::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026_02_14_100000_AddGroupCalibrador.php.html#13"><abbr title="App\Database\Migrations\AddGroupCalibrador::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026_02_14_100000_AddGroupCalibrador.php.html#51"><abbr title="App\Database\Migrations\AddGroupCalibrador::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026_02_17_100000_DocumentosTransportistasUnidades.php.html#12"><abbr title="App\Database\Migrations\DocumentosTransportistasUnidades::up">up</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Migrations/2026_02_17_100000_DocumentosTransportistasUnidades.php.html#70"><abbr title="App\Database\Migrations\DocumentosTransportistasUnidades::down">down</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Seeds/AgregarUsuarioFranSeeder.php.html#13"><abbr title="App\Database\Seeds\AgregarUsuarioFranSeeder::run">run</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Seeds/IonAuthSeeder.php.html#12"><abbr title="App\Database\Seeds\IonAuthSeeder::run">run</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Seeds/PaisesProvinciasSeeder.php.html#9"><abbr title="App\Database\Seeds\PaisesProvinciasSeeder::run">run</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Migrations/2026-01-07-173138_PaisesProvincias.php.html#9"><abbr title="App\Database\Migrations\PaisesProvincias::up">up</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Seeds/PaisesProvinciasSeeder.php.html#9"><abbr title="App\Database\Seeds\PaisesProvinciasSeeder::run">run</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-290000_AddNumeroSemiDetalleYMultiflecha.php.html#15"><abbr title="App\Database\Migrations\AddNumeroSemiDetalleYMultiflecha::up">up</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-290000_AddNumeroSemiDetalleYMultiflecha.php.html#70"><abbr title="App\Database\Migrations\AddNumeroSemiDetalleYMultiflecha::down">down</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-210000_AddCamposCalibracionesYDetalle.php.html#9"><abbr title="App\Database\Migrations\AddCamposCalibracionesYDetalle::up">up</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-250000_EstadoUsuariosYNotificaciones.php.html#9"><abbr title="App\Database\Migrations\EstadoUsuariosYNotificaciones::up">up</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-250000_EstadoUsuariosYNotificaciones.php.html#48"><abbr title="App\Database\Migrations\EstadoUsuariosYNotificaciones::down">down</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-270000_DropWhatsAppFromNotificacionConfig.php.html#25"><abbr title="App\Database\Migrations\DropWhatsAppFromNotificacionConfig::down">down</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-240000_AddImpresionCalibraciones.php.html#9"><abbr title="App\Database\Migrations\AddImpresionCalibraciones::up">up</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-173301_AddPaisProvinciaToTransportistas.php.html#9"><abbr title="App\Database\Migrations\AddPaisProvinciaToTransportistas::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-175508_AddChecklistToEquipos.php.html#9"><abbr title="App\Database\Migrations\AddChecklistToEquipos::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-210000_AddCamposCalibracionesYDetalle.php.html#143"><abbr title="App\Database\Migrations\AddCamposCalibracionesYDetalle::down">down</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-220000_TokenPublicoYAccesosCalibracion.php.html#9"><abbr title="App\Database\Migrations\TokenPublicoYAccesosCalibracion::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-220000_TokenPublicoYAccesosCalibracion.php.html#42"><abbr title="App\Database\Migrations\TokenPublicoYAccesosCalibracion::down">down</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-230000_BackfillTokenPublicoCalibraciones.php.html#13"><abbr title="App\Database\Migrations\BackfillTokenPublicoCalibraciones::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-260000_ConfigNotificacionesAdmin.php.html#12"><abbr title="App\Database\Migrations\ConfigNotificacionesAdmin::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-260000_ConfigNotificacionesAdmin.php.html#57"><abbr title="App\Database\Migrations\ConfigNotificacionesAdmin::down">down</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-270000_DropWhatsAppFromNotificacionConfig.php.html#12"><abbr title="App\Database\Migrations\DropWhatsAppFromNotificacionConfig::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-160000_DropEquiposYIdEquipoEnUnidades.php.html#13"><abbr title="App\Database\Migrations\DropEquiposYIdEquipoEnUnidades::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-220000_AddEjesCubiertasSemiTraseroUnidades.php.html#12"><abbr title="App\Database\Migrations\AddEjesCubiertasSemiTraseroUnidades::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-240000_AddImpresionCalibraciones.php.html#41"><abbr title="App\Database\Migrations\AddImpresionCalibraciones::down">down</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-310000_AddIdUsuarioCreacionReglas.php.html#9"><abbr title="App\Database\Migrations\AddIdUsuarioCreacionReglas::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-02-09-100000_CalibracionInformeCargaSegura.php.html#9"><abbr title="App\Database\Migrations\CalibracionInformeCargaSegura::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026_02_14_100000_AddGroupCalibrador.php.html#13"><abbr title="App\Database\Migrations\AddGroupCalibrador::up">up</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Migrations/2026-01-07-175508_AddChecklistToEquipos.php.html#47"><abbr title="App\Database\Migrations\AddChecklistToEquipos::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-01-20-142654_Unidades.php.html#9"><abbr title="App\Database\Migrations\Unidades::up">up</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-190000_FixTipoUnidadSemToSemi.php.html#13"><abbr title="App\Database\Migrations\FixTipoUnidadSemToSemi::up">up</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-190000_FixTipoUnidadSemToSemi.php.html#30"><abbr title="App\Database\Migrations\FixTipoUnidadSemToSemi::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-200000_Calibraciones.php.html#9"><abbr title="App\Database\Migrations\Calibraciones::up">up</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-240000_RolesYUsuarios.php.html#9"><abbr title="App\Database\Migrations\RolesYUsuarios::up">up</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-240000_RolesYUsuarios.php.html#48"><abbr title="App\Database\Migrations\RolesYUsuarios::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-300000_AddDiasAvisoVencimiento.php.html#12"><abbr title="App\Database\Migrations\AddDiasAvisoVencimiento::up">up</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-300000_AddDiasAvisoVencimiento.php.html#31"><abbr title="App\Database\Migrations\AddDiasAvisoVencimiento::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-210000_AddPaisNacionToUnidades.php.html#13"><abbr title="App\Database\Migrations\AddPaisNacionToUnidades::up">up</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-210000_AddPaisNacionToUnidades.php.html#38"><abbr title="App\Database\Migrations\AddPaisNacionToUnidades::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-220000_AddEjesCubiertasSemiTraseroUnidades.php.html#44"><abbr title="App\Database\Migrations\AddEjesCubiertasSemiTraseroUnidades::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-250000_CalibracionReimpresiones.php.html#9"><abbr title="App\Database\Migrations\CalibracionReimpresiones::up">up</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-280000_CalibracionNotas.php.html#56"><abbr title="App\Database\Migrations\CalibracionNotas::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-310000_AddIdUsuarioCreacionReglas.php.html#31"><abbr title="App\Database\Migrations\AddIdUsuarioCreacionReglas::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-09-100000_CalibracionInformeCargaSegura.php.html#104"><abbr title="App\Database\Migrations\CalibracionInformeCargaSegura::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-100000_AddCuitToTransportistas.php.html#9"><abbr title="App\Database\Migrations\AddCuitToTransportistas::up">up</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-100000_AddCuitToTransportistas.php.html#26"><abbr title="App\Database\Migrations\AddCuitToTransportistas::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-110000_AddNotaPosicionSensoresInforme.php.html#9"><abbr title="App\Database\Migrations\AddNotaPosicionSensoresInforme::up">up</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-02-12-110000_AddNotaPosicionSensoresInforme.php.html#26"><abbr title="App\Database\Migrations\AddNotaPosicionSensoresInforme::down">down</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Seeds/AgregarUsuarioFranSeeder.php.html#13"><abbr title="App\Database\Seeds\AgregarUsuarioFranSeeder::run">run</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Migrations/2026-01-26-290000_IonAuthTables.php.html#15"><abbr title="App\Database\Migrations\IonAuthTables::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-120000_CalibracionMultiflecha.php.html#14"><abbr title="App\Database\Migrations\CalibracionMultiflecha::up">up</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-170000_AddTransporteToUnidades.php.html#12"><abbr title="App\Database\Migrations\AddTransporteToUnidades::up">up</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-170000_AddTransporteToUnidades.php.html#26"><abbr title="App\Database\Migrations\AddTransporteToUnidades::down">down</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-190000_DropTransporteFromUnidades.php.html#13"><abbr title="App\Database\Migrations\DropTransporteFromUnidades::up">up</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-190000_DropTransporteFromUnidades.php.html#20"><abbr title="App\Database\Migrations\DropTransporteFromUnidades::down">down</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-200000_AddSemiDelanteraPbtToUnidades.php.html#13"><abbr title="App\Database\Migrations\AddSemiDelanteraPbtToUnidades::up">up</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-200000_AddSemiDelanteraPbtToUnidades.php.html#27"><abbr title="App\Database\Migrations\AddSemiDelanteraPbtToUnidades::down">down</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Migrations/2026-02-06-280000_CalibracionNotas.php.html#13"><abbr title="App\Database\Migrations\CalibracionNotas::up">up</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Migrations/2026_02_14_100000_AddGroupCalibrador.php.html#51"><abbr title="App\Database\Migrations\AddGroupCalibrador::down">down</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 10.1.16-25-g11775ba4</a> using <a href="https://www.php.net/" target="_top">PHP 8.2.0</a> and <a href="https://phpunit.de/">PHPUnit 10.5.63-3-g4ba6f4da6</a> at Fri Feb 20 17:21:34 -03 2026.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../_js/jquery.min.js?v=10.1.16-25-g11775ba4" type="text/javascript"></script>
+  <script src="../_js/d3.min.js?v=10.1.16-25-g11775ba4" type="text/javascript"></script>
+  <script src="../_js/nv.d3.min.js?v=10.1.16-25-g11775ba4" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([49,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([96,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,2,"<a href=\"Migrations\/2026-01-07-152436_Transportistas.php.html#7\">App\\Database\\Migrations\\Transportistas<\/a>"],[0,2,"<a href=\"Migrations\/2026-01-07-173137_Paises.php.html#7\">App\\Database\\Migrations\\Paises<\/a>"],[0,11,"<a href=\"Migrations\/2026-01-07-173138_PaisesProvincias.php.html#7\">App\\Database\\Migrations\\PaisesProvincias<\/a>"],[0,5,"<a href=\"Migrations\/2026-01-07-173301_AddPaisProvinciaToTransportistas.php.html#7\">App\\Database\\Migrations\\AddPaisProvinciaToTransportistas<\/a>"],[0,2,"<a href=\"Migrations\/2026-01-07-174619_Equipos.php.html#7\">App\\Database\\Migrations\\Equipos<\/a>"],[0,7,"<a href=\"Migrations\/2026-01-07-175508_AddChecklistToEquipos.php.html#7\">App\\Database\\Migrations\\AddChecklistToEquipos<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-20-142654_Unidades.php.html#7\">App\\Database\\Migrations\\Unidades<\/a>"],[0,2,"<a href=\"Migrations\/2026-01-26-120000_Banderas.php.html#7\">App\\Database\\Migrations\\Banderas<\/a>"],[0,2,"<a href=\"Migrations\/2026-01-26-150000_Calibradores.php.html#7\">App\\Database\\Migrations\\Calibradores<\/a>"],[0,2,"<a href=\"Migrations\/2026-01-26-160000_Marcas.php.html#7\">App\\Database\\Migrations\\Marcas<\/a>"],[0,2,"<a href=\"Migrations\/2026-01-26-170000_Naciones.php.html#7\">App\\Database\\Migrations\\Naciones<\/a>"],[0,2,"<a href=\"Migrations\/2026-01-26-180000_Cubiertas.php.html#7\">App\\Database\\Migrations\\Cubiertas<\/a>"],[0,6,"<a href=\"Migrations\/2026-01-26-190000_FixTipoUnidadSemToSemi.php.html#11\">App\\Database\\Migrations\\FixTipoUnidadSemToSemi<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-26-200000_Calibraciones.php.html#7\">App\\Database\\Migrations\\Calibraciones<\/a>"],[0,9,"<a href=\"Migrations\/2026-01-26-210000_AddCamposCalibracionesYDetalle.php.html#7\">App\\Database\\Migrations\\AddCamposCalibracionesYDetalle<\/a>"],[0,8,"<a href=\"Migrations\/2026-01-26-220000_TokenPublicoYAccesosCalibracion.php.html#7\">App\\Database\\Migrations\\TokenPublicoYAccesosCalibracion<\/a>"],[0,5,"<a href=\"Migrations\/2026-01-26-230000_BackfillTokenPublicoCalibraciones.php.html#11\">App\\Database\\Migrations\\BackfillTokenPublicoCalibraciones<\/a>"],[0,6,"<a href=\"Migrations\/2026-01-26-240000_RolesYUsuarios.php.html#7\">App\\Database\\Migrations\\RolesYUsuarios<\/a>"],[0,10,"<a href=\"Migrations\/2026-01-26-250000_EstadoUsuariosYNotificaciones.php.html#7\">App\\Database\\Migrations\\EstadoUsuariosYNotificaciones<\/a>"],[0,8,"<a href=\"Migrations\/2026-01-26-260000_ConfigNotificacionesAdmin.php.html#10\">App\\Database\\Migrations\\ConfigNotificacionesAdmin<\/a>"],[0,9,"<a href=\"Migrations\/2026-01-26-270000_DropWhatsAppFromNotificacionConfig.php.html#10\">App\\Database\\Migrations\\DropWhatsAppFromNotificacionConfig<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-26-290000_IonAuthTables.php.html#11\">App\\Database\\Migrations\\IonAuthTables<\/a>"],[0,6,"<a href=\"Migrations\/2026-01-26-300000_AddDiasAvisoVencimiento.php.html#10\">App\\Database\\Migrations\\AddDiasAvisoVencimiento<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-06-120000_CalibracionMultiflecha.php.html#12\">App\\Database\\Migrations\\CalibracionMultiflecha<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-120000_MarcasSensor.php.html#7\">App\\Database\\Migrations\\MarcasSensor<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-150000_UnidadesBitrenYCamposEquipo.php.html#12\">App\\Database\\Migrations\\UnidadesBitrenYCamposEquipo<\/a>"],[0,5,"<a href=\"Migrations\/2026-02-06-160000_DropEquiposYIdEquipoEnUnidades.php.html#11\">App\\Database\\Migrations\\DropEquiposYIdEquipoEnUnidades<\/a>"],[0,4,"<a href=\"Migrations\/2026-02-06-170000_AddTransporteToUnidades.php.html#10\">App\\Database\\Migrations\\AddTransporteToUnidades<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-180000_ModoCargaEnumUnidades.php.html#11\">App\\Database\\Migrations\\ModoCargaEnumUnidades<\/a>"],[0,4,"<a href=\"Migrations\/2026-02-06-190000_DropTransporteFromUnidades.php.html#11\">App\\Database\\Migrations\\DropTransporteFromUnidades<\/a>"],[0,4,"<a href=\"Migrations\/2026-02-06-200000_AddSemiDelanteraPbtToUnidades.php.html#11\">App\\Database\\Migrations\\AddSemiDelanteraPbtToUnidades<\/a>"],[0,6,"<a href=\"Migrations\/2026-02-06-210000_AddPaisNacionToUnidades.php.html#11\">App\\Database\\Migrations\\AddPaisNacionToUnidades<\/a>"],[0,7,"<a href=\"Migrations\/2026-02-06-220000_AddEjesCubiertasSemiTraseroUnidades.php.html#10\">App\\Database\\Migrations\\AddEjesCubiertasSemiTraseroUnidades<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-230000_Reglas.php.html#7\">App\\Database\\Migrations\\Reglas<\/a>"],[0,9,"<a href=\"Migrations\/2026-02-06-240000_AddImpresionCalibraciones.php.html#7\">App\\Database\\Migrations\\AddImpresionCalibraciones<\/a>"],[0,4,"<a href=\"Migrations\/2026-02-06-250000_CalibracionReimpresiones.php.html#7\">App\\Database\\Migrations\\CalibracionReimpresiones<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-260000_AddIdCalibracionReemplazo.php.html#7\">App\\Database\\Migrations\\AddIdCalibracionReemplazo<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-270000_ParametrosSistema.php.html#10\">App\\Database\\Migrations\\ParametrosSistema<\/a>"],[0,5,"<a href=\"Migrations\/2026-02-06-280000_CalibracionNotas.php.html#11\">App\\Database\\Migrations\\CalibracionNotas<\/a>"],[0,16,"<a href=\"Migrations\/2026-02-06-290000_AddNumeroSemiDetalleYMultiflecha.php.html#13\">App\\Database\\Migrations\\AddNumeroSemiDetalleYMultiflecha<\/a>"],[0,7,"<a href=\"Migrations\/2026-02-06-310000_AddIdUsuarioCreacionReglas.php.html#7\">App\\Database\\Migrations\\AddIdUsuarioCreacionReglas<\/a>"],[0,7,"<a href=\"Migrations\/2026-02-09-100000_CalibracionInformeCargaSegura.php.html#7\">App\\Database\\Migrations\\CalibracionInformeCargaSegura<\/a>"],[0,6,"<a href=\"Migrations\/2026-02-12-100000_AddCuitToTransportistas.php.html#7\">App\\Database\\Migrations\\AddCuitToTransportistas<\/a>"],[0,6,"<a href=\"Migrations\/2026-02-12-110000_AddNotaPosicionSensoresInforme.php.html#7\">App\\Database\\Migrations\\AddNotaPosicionSensoresInforme<\/a>"],[0,6,"<a href=\"Migrations\/2026_02_14_100000_AddGroupCalibrador.php.html#11\">App\\Database\\Migrations\\AddGroupCalibrador<\/a>"],[0,2,"<a href=\"Migrations\/2026_02_17_100000_DocumentosTransportistasUnidades.php.html#10\">App\\Database\\Migrations\\DocumentosTransportistasUnidades<\/a>"],[0,3,"<a href=\"Seeds\/AgregarUsuarioFranSeeder.php.html#11\">App\\Database\\Seeds\\AgregarUsuarioFranSeeder<\/a>"],[0,1,"<a href=\"Seeds\/IonAuthSeeder.php.html#10\">App\\Database\\Seeds\\IonAuthSeeder<\/a>"],[0,10,"<a href=\"Seeds\/PaisesProvinciasSeeder.php.html#7\">App\\Database\\Seeds\\PaisesProvinciasSeeder<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Migrations\/2026-01-07-152436_Transportistas.php.html#9\">App\\Database\\Migrations\\Transportistas::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-07-152436_Transportistas.php.html#93\">App\\Database\\Migrations\\Transportistas::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-07-173137_Paises.php.html#9\">App\\Database\\Migrations\\Paises::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-07-173137_Paises.php.html#55\">App\\Database\\Migrations\\Paises::down<\/a>"],[0,10,"<a href=\"Migrations\/2026-01-07-173138_PaisesProvincias.php.html#9\">App\\Database\\Migrations\\PaisesProvincias::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-07-173138_PaisesProvincias.php.html#164\">App\\Database\\Migrations\\PaisesProvincias::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-07-173301_AddPaisProvinciaToTransportistas.php.html#9\">App\\Database\\Migrations\\AddPaisProvinciaToTransportistas::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-07-173301_AddPaisProvinciaToTransportistas.php.html#38\">App\\Database\\Migrations\\AddPaisProvinciaToTransportistas::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-07-174619_Equipos.php.html#9\">App\\Database\\Migrations\\Equipos::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-07-174619_Equipos.php.html#191\">App\\Database\\Migrations\\Equipos::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-07-175508_AddChecklistToEquipos.php.html#9\">App\\Database\\Migrations\\AddChecklistToEquipos::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-01-07-175508_AddChecklistToEquipos.php.html#47\">App\\Database\\Migrations\\AddChecklistToEquipos::down<\/a>"],[0,3,"<a href=\"Migrations\/2026-01-20-142654_Unidades.php.html#9\">App\\Database\\Migrations\\Unidades::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-20-142654_Unidades.php.html#179\">App\\Database\\Migrations\\Unidades::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-120000_Banderas.php.html#9\">App\\Database\\Migrations\\Banderas::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-120000_Banderas.php.html#37\">App\\Database\\Migrations\\Banderas::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-150000_Calibradores.php.html#9\">App\\Database\\Migrations\\Calibradores::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-150000_Calibradores.php.html#37\">App\\Database\\Migrations\\Calibradores::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-160000_Marcas.php.html#9\">App\\Database\\Migrations\\Marcas::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-160000_Marcas.php.html#37\">App\\Database\\Migrations\\Marcas::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-170000_Naciones.php.html#9\">App\\Database\\Migrations\\Naciones::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-170000_Naciones.php.html#37\">App\\Database\\Migrations\\Naciones::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-180000_Cubiertas.php.html#9\">App\\Database\\Migrations\\Cubiertas::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-180000_Cubiertas.php.html#38\">App\\Database\\Migrations\\Cubiertas::down<\/a>"],[0,3,"<a href=\"Migrations\/2026-01-26-190000_FixTipoUnidadSemToSemi.php.html#13\">App\\Database\\Migrations\\FixTipoUnidadSemToSemi::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-01-26-190000_FixTipoUnidadSemToSemi.php.html#30\">App\\Database\\Migrations\\FixTipoUnidadSemToSemi::down<\/a>"],[0,3,"<a href=\"Migrations\/2026-01-26-200000_Calibraciones.php.html#9\">App\\Database\\Migrations\\Calibraciones::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-200000_Calibraciones.php.html#74\">App\\Database\\Migrations\\Calibraciones::down<\/a>"],[0,5,"<a href=\"Migrations\/2026-01-26-210000_AddCamposCalibracionesYDetalle.php.html#9\">App\\Database\\Migrations\\AddCamposCalibracionesYDetalle::up<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-26-210000_AddCamposCalibracionesYDetalle.php.html#143\">App\\Database\\Migrations\\AddCamposCalibracionesYDetalle::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-26-220000_TokenPublicoYAccesosCalibracion.php.html#9\">App\\Database\\Migrations\\TokenPublicoYAccesosCalibracion::up<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-26-220000_TokenPublicoYAccesosCalibracion.php.html#42\">App\\Database\\Migrations\\TokenPublicoYAccesosCalibracion::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-26-230000_BackfillTokenPublicoCalibraciones.php.html#13\">App\\Database\\Migrations\\BackfillTokenPublicoCalibraciones::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-230000_BackfillTokenPublicoCalibraciones.php.html#29\">App\\Database\\Migrations\\BackfillTokenPublicoCalibraciones::down<\/a>"],[0,3,"<a href=\"Migrations\/2026-01-26-240000_RolesYUsuarios.php.html#9\">App\\Database\\Migrations\\RolesYUsuarios::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-01-26-240000_RolesYUsuarios.php.html#48\">App\\Database\\Migrations\\RolesYUsuarios::down<\/a>"],[0,5,"<a href=\"Migrations\/2026-01-26-250000_EstadoUsuariosYNotificaciones.php.html#9\">App\\Database\\Migrations\\EstadoUsuariosYNotificaciones::up<\/a>"],[0,5,"<a href=\"Migrations\/2026-01-26-250000_EstadoUsuariosYNotificaciones.php.html#48\">App\\Database\\Migrations\\EstadoUsuariosYNotificaciones::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-26-260000_ConfigNotificacionesAdmin.php.html#12\">App\\Database\\Migrations\\ConfigNotificacionesAdmin::up<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-26-260000_ConfigNotificacionesAdmin.php.html#57\">App\\Database\\Migrations\\ConfigNotificacionesAdmin::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-01-26-270000_DropWhatsAppFromNotificacionConfig.php.html#12\">App\\Database\\Migrations\\DropWhatsAppFromNotificacionConfig::up<\/a>"],[0,5,"<a href=\"Migrations\/2026-01-26-270000_DropWhatsAppFromNotificacionConfig.php.html#25\">App\\Database\\Migrations\\DropWhatsAppFromNotificacionConfig::down<\/a>"],[0,2,"<a href=\"Migrations\/2026-01-26-290000_IonAuthTables.php.html#15\">App\\Database\\Migrations\\IonAuthTables::__construct<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-290000_IonAuthTables.php.html#23\">App\\Database\\Migrations\\IonAuthTables::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-01-26-290000_IonAuthTables.php.html#85\">App\\Database\\Migrations\\IonAuthTables::down<\/a>"],[0,3,"<a href=\"Migrations\/2026-01-26-300000_AddDiasAvisoVencimiento.php.html#12\">App\\Database\\Migrations\\AddDiasAvisoVencimiento::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-01-26-300000_AddDiasAvisoVencimiento.php.html#31\">App\\Database\\Migrations\\AddDiasAvisoVencimiento::down<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-120000_CalibracionMultiflecha.php.html#14\">App\\Database\\Migrations\\CalibracionMultiflecha::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-120000_CalibracionMultiflecha.php.html#92\">App\\Database\\Migrations\\CalibracionMultiflecha::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-120000_MarcasSensor.php.html#9\">App\\Database\\Migrations\\MarcasSensor::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-120000_MarcasSensor.php.html#37\">App\\Database\\Migrations\\MarcasSensor::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-150000_UnidadesBitrenYCamposEquipo.php.html#14\">App\\Database\\Migrations\\UnidadesBitrenYCamposEquipo::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-150000_UnidadesBitrenYCamposEquipo.php.html#103\">App\\Database\\Migrations\\UnidadesBitrenYCamposEquipo::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-02-06-160000_DropEquiposYIdEquipoEnUnidades.php.html#13\">App\\Database\\Migrations\\DropEquiposYIdEquipoEnUnidades::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-160000_DropEquiposYIdEquipoEnUnidades.php.html#27\">App\\Database\\Migrations\\DropEquiposYIdEquipoEnUnidades::down<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-170000_AddTransporteToUnidades.php.html#12\">App\\Database\\Migrations\\AddTransporteToUnidades::up<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-170000_AddTransporteToUnidades.php.html#26\">App\\Database\\Migrations\\AddTransporteToUnidades::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-180000_ModoCargaEnumUnidades.php.html#15\">App\\Database\\Migrations\\ModoCargaEnumUnidades::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-180000_ModoCargaEnumUnidades.php.html#21\">App\\Database\\Migrations\\ModoCargaEnumUnidades::down<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-190000_DropTransporteFromUnidades.php.html#13\">App\\Database\\Migrations\\DropTransporteFromUnidades::up<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-190000_DropTransporteFromUnidades.php.html#20\">App\\Database\\Migrations\\DropTransporteFromUnidades::down<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-200000_AddSemiDelanteraPbtToUnidades.php.html#13\">App\\Database\\Migrations\\AddSemiDelanteraPbtToUnidades::up<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-200000_AddSemiDelanteraPbtToUnidades.php.html#27\">App\\Database\\Migrations\\AddSemiDelanteraPbtToUnidades::down<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-06-210000_AddPaisNacionToUnidades.php.html#13\">App\\Database\\Migrations\\AddPaisNacionToUnidades::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-06-210000_AddPaisNacionToUnidades.php.html#38\">App\\Database\\Migrations\\AddPaisNacionToUnidades::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-02-06-220000_AddEjesCubiertasSemiTraseroUnidades.php.html#12\">App\\Database\\Migrations\\AddEjesCubiertasSemiTraseroUnidades::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-06-220000_AddEjesCubiertasSemiTraseroUnidades.php.html#44\">App\\Database\\Migrations\\AddEjesCubiertasSemiTraseroUnidades::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-230000_Reglas.php.html#9\">App\\Database\\Migrations\\Reglas::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-230000_Reglas.php.html#46\">App\\Database\\Migrations\\Reglas::down<\/a>"],[0,5,"<a href=\"Migrations\/2026-02-06-240000_AddImpresionCalibraciones.php.html#9\">App\\Database\\Migrations\\AddImpresionCalibraciones::up<\/a>"],[0,4,"<a href=\"Migrations\/2026-02-06-240000_AddImpresionCalibraciones.php.html#41\">App\\Database\\Migrations\\AddImpresionCalibraciones::down<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-06-250000_CalibracionReimpresiones.php.html#9\">App\\Database\\Migrations\\CalibracionReimpresiones::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-250000_CalibracionReimpresiones.php.html#59\">App\\Database\\Migrations\\CalibracionReimpresiones::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-260000_AddIdCalibracionReemplazo.php.html#9\">App\\Database\\Migrations\\AddIdCalibracionReemplazo::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-260000_AddIdCalibracionReemplazo.php.html#26\">App\\Database\\Migrations\\AddIdCalibracionReemplazo::down<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-270000_ParametrosSistema.php.html#12\">App\\Database\\Migrations\\ParametrosSistema::up<\/a>"],[0,1,"<a href=\"Migrations\/2026-02-06-270000_ParametrosSistema.php.html#35\">App\\Database\\Migrations\\ParametrosSistema::down<\/a>"],[0,2,"<a href=\"Migrations\/2026-02-06-280000_CalibracionNotas.php.html#13\">App\\Database\\Migrations\\CalibracionNotas::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-06-280000_CalibracionNotas.php.html#56\">App\\Database\\Migrations\\CalibracionNotas::down<\/a>"],[0,8,"<a href=\"Migrations\/2026-02-06-290000_AddNumeroSemiDetalleYMultiflecha.php.html#15\">App\\Database\\Migrations\\AddNumeroSemiDetalleYMultiflecha::up<\/a>"],[0,8,"<a href=\"Migrations\/2026-02-06-290000_AddNumeroSemiDetalleYMultiflecha.php.html#70\">App\\Database\\Migrations\\AddNumeroSemiDetalleYMultiflecha::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-02-06-310000_AddIdUsuarioCreacionReglas.php.html#9\">App\\Database\\Migrations\\AddIdUsuarioCreacionReglas::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-06-310000_AddIdUsuarioCreacionReglas.php.html#31\">App\\Database\\Migrations\\AddIdUsuarioCreacionReglas::down<\/a>"],[0,4,"<a href=\"Migrations\/2026-02-09-100000_CalibracionInformeCargaSegura.php.html#9\">App\\Database\\Migrations\\CalibracionInformeCargaSegura::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-09-100000_CalibracionInformeCargaSegura.php.html#104\">App\\Database\\Migrations\\CalibracionInformeCargaSegura::down<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-12-100000_AddCuitToTransportistas.php.html#9\">App\\Database\\Migrations\\AddCuitToTransportistas::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-12-100000_AddCuitToTransportistas.php.html#26\">App\\Database\\Migrations\\AddCuitToTransportistas::down<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-12-110000_AddNotaPosicionSensoresInforme.php.html#9\">App\\Database\\Migrations\\AddNotaPosicionSensoresInforme::up<\/a>"],[0,3,"<a href=\"Migrations\/2026-02-12-110000_AddNotaPosicionSensoresInforme.php.html#26\">App\\Database\\Migrations\\AddNotaPosicionSensoresInforme::down<\/a>"],[0,4,"<a href=\"Migrations\/2026_02_14_100000_AddGroupCalibrador.php.html#13\">App\\Database\\Migrations\\AddGroupCalibrador::up<\/a>"],[0,2,"<a href=\"Migrations\/2026_02_14_100000_AddGroupCalibrador.php.html#51\">App\\Database\\Migrations\\AddGroupCalibrador::down<\/a>"],[0,1,"<a href=\"Migrations\/2026_02_17_100000_DocumentosTransportistasUnidades.php.html#12\">App\\Database\\Migrations\\DocumentosTransportistasUnidades::up<\/a>"],[0,1,"<a href=\"Migrations\/2026_02_17_100000_DocumentosTransportistasUnidades.php.html#70\">App\\Database\\Migrations\\DocumentosTransportistasUnidades::down<\/a>"],[0,3,"<a href=\"Seeds\/AgregarUsuarioFranSeeder.php.html#13\">App\\Database\\Seeds\\AgregarUsuarioFranSeeder::run<\/a>"],[0,1,"<a href=\"Seeds\/IonAuthSeeder.php.html#12\">App\\Database\\Seeds\\IonAuthSeeder::run<\/a>"],[0,10,"<a href=\"Seeds\/PaisesProvinciasSeeder.php.html#9\">App\\Database\\Seeds\\PaisesProvinciasSeeder::run<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

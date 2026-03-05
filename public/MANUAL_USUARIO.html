@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manual de Usuario — Montajes Campana</title>
+  <style>
+    :root { --text: #1a1a1a; --muted: #555; --border: #ddd; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.5; color: var(--text); max-width: 800px; margin: 0 auto; padding: 2rem; }
+    .pdf-hint { background: #e8f4fd; border: 1px solid #0d6efd; border-radius: 8px; padding: 1rem; margin-bottom: 2rem; font-size: 0.95rem; }
+    .pdf-hint strong { display: block; margin-bottom: 0.25rem; }
+    h1 { font-size: 1.75rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-top: 0; }
+    h2 { font-size: 1.35rem; margin-top: 2rem; margin-bottom: 0.75rem; color: #333; }
+    h3 { font-size: 1.1rem; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    p { margin: 0.5rem 0; }
+    ul { margin: 0.5rem 0; padding-left: 1.5rem; }
+    li { margin: 0.25rem 0; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+    strong { font-weight: 600; }
+    .footer-note { font-size: 0.9rem; color: var(--muted); margin-top: 2rem; font-style: italic; }
+    @media print {
+      body { padding: 1rem; }
+      .pdf-hint { display: none !important; }
+      h2 { page-break-after: avoid; }
+      h3 { page-break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="pdf-hint">
+  <strong>Guardar como PDF</strong>
+  En el navegador: <kbd>Ctrl+P</kbd> (o <kbd>Cmd+P</kbd> en Mac) → elegir <strong>Guardar como PDF</strong> o <strong>Microsoft Print to PDF</strong> como impresora.
+</div>
+
+<h1>Manual de Usuario — Montajes Campana</h1>
+<p>Sistema de gestión de montajes y calibraciones. Este manual describe la aplicación tal como está en la versión actual.</p>
+<hr>
+
+<h2>1. Descripción general</h2>
+<p><strong>Montajes Campana</strong> permite:</p>
+<ul>
+  <li>Gestionar <strong>transportistas</strong> y <strong>equipos</strong> (flota: tractor + semi, patentes, tipos CHASIS/ACOPLADO/SEMI).</li>
+  <li>Mantener catálogos: <strong>banderas</strong>, <strong>calibradores</strong>, <strong>cubiertas</strong>, <strong>marcas</strong>, <strong>nación</strong>.</li>
+  <li>Registrar <strong>calibraciones</strong> por patente (fecha, vencimiento, calibrador, detalle por cisterna) e imprimir certificados.</li>
+  <li>Ver un <strong>dashboard</strong> de vencimientos (equipos vencidos, próximos 30 días, flota activa, calibraciones activas).</li>
+  <li>Generar <strong>reportes</strong> (calibraciones, vencimientos, flota, transportistas) y exportar a CSV.</li>
+  <li>Recibir <strong>notificaciones</strong> (solo administradores): avisos de calibraciones por vencer, configuración por email y recordatorios.</li>
+</ul>
+<p><strong>Navegación:</strong> menú lateral izquierdo con enlaces a cada sección. En la parte inferior del menú, <strong>Salir</strong> para cerrar sesión.</p>
+<hr>
+
+<h2>2. Acceso e inicio de sesión</h2>
+<h3>2.1 Entrar a la aplicación</h3>
+<ul>
+  <li>Abrí la URL de la aplicación en el navegador (ej. <code>http://localhost/montajes-campana/public</code>).</li>
+  <li>Si no estás logueado, se muestra la pantalla de <strong>Ingresar</strong>.</li>
+</ul>
+<h3>2.2 Formas de ingreso</h3>
+<p><strong>Opción A — Usuario y contraseña</strong></p>
+<ul>
+  <li>Completá <strong>Email / Usuario</strong> y <strong>Contraseña</strong>.</li>
+  <li>Opcional: marcar <strong>Recuérdame</strong>.</li>
+  <li>Clic en <strong>Ingresar</strong>.</li>
+</ul>
+<p><strong>Opción B — Google</strong></p>
+<ul>
+  <li>Clic en <strong>Acceder con Google</strong> y elegí la cuenta (ej. Gmail).</li>
+  <li>Solo podés entrar con Google si tu correo <strong>ya está registrado</strong> en el sistema. Si no, aparece el mensaje: <em>"Este correo no está registrado. Solo pueden entrar con Google usuarios ya dados de alta. Contactá al administrador."</em></li>
+</ul>
+<h3>2.3 Después del login</h3>
+<ul>
+  <li>Se redirige al <strong>Inicio</strong> (Dashboard).</li>
+  <li>El menú lateral muestra las opciones según tu rol (administradores ven además <strong>Notificaciones</strong>).</li>
+</ul>
+<hr>
+
+<h2>3. Inicio (Dashboard)</h2>
+<p>Al hacer clic en <strong>Inicio</strong> en el menú se muestra el <strong>Dashboard de Vencimientos</strong>.</p>
+<h3>3.1 Tarjetas (KPIs)</h3>
+<ul>
+  <li><strong>Equipos Vencidos:</strong> cantidad de calibraciones con fecha de vencimiento ya pasada.</li>
+  <li><strong>Próximos (30 días):</strong> calibraciones que vencen en los próximos 30 días.</li>
+  <li><strong>Flota Activa:</strong> cantidad total de equipos (tractor + semi) cargados en el sistema.</li>
+  <li><strong>Calibraciones Activas:</strong> cantidad de calibraciones vigentes (fecha de vencimiento hoy o posterior).</li>
+</ul>
+<h3>3.2 Tabla de vencimientos críticos</h3>
+<ul>
+  <li>Lista de calibraciones <strong>vencidas</strong> o que vencen en los <strong>próximos 30 días</strong>.</li>
+  <li>Columnas: Equipo, Transportista, Documento, Fecha vencimiento, Estado (VENCIDO / Próximo).</li>
+  <li>Ordenadas por fecha de vencimiento. Podés usar búsqueda y paginación si la tabla lo permite.</li>
+</ul>
+<hr>
+
+<h2>4. Módulos de datos (CRUD)</h2>
+<p>Los siguientes módulos siguen el mismo esquema: <strong>listado en tabla</strong>, <strong>Nueva</strong> (o similar), <strong>Editar</strong> y <strong>Eliminar</strong> por fila. En general hay filtros de búsqueda en la parte superior.</p>
+<h3>4.1 Transportistas</h3>
+<ul>
+  <li><strong>Qué es:</strong> empresas o personas que son transportistas.</li>
+  <li><strong>Acción:</strong> listar, crear, editar, eliminar.</li>
+  <li><strong>Datos típicos:</strong> nombre, dirección, localidad, provincia, país, teléfono, email, comentarios.</li>
+</ul>
+<h3>4.2 Equipos</h3>
+<ul>
+  <li><strong>Qué es:</strong> cada equipo es un conjunto tractor + semi (flota).</li>
+  <li><strong>Acción:</strong> listar, crear, editar, eliminar.</li>
+  <li><strong>Datos:</strong> transportista, bitren, transporte, fecha alta, modo carga, nación; datos del tractor y semi; tara total, peso máximo, capacidad total; hasta 10 cisternas; comentarios.</li>
+</ul>
+<h3>4.3 Banderas, 4.4 Calibradores, 4.5 Cubiertas, 4.6 Marcas, 4.7 Nación</h3>
+<p>Catálogos: listar, crear, editar, eliminar. Se usan en equipos o calibraciones según corresponda.</p>
+<hr>
+
+<h2>5. Calibración</h2>
+<p>Menú: <strong>Calibración</strong>.</p>
+<h3>5.1 Listado</h3>
+<p>Tabla con Nº, Patente, Fecha calib., Calibrador. Filtros por Nº y Patente. Acciones: Editar, Imprimir, Eliminar.</p>
+<h3>5.2 Nueva calibración / Editar</h3>
+<p>Formulario: Patente, Fecha y Vencimiento calibración, Calibrador, tipo unidad, multi flecha, Nº regla, temp. agua, válvulas, observaciones; detalle por línea/cisterna (capacidad, enrase, referencia, vacío, precintos). Guardar para crear o actualizar.</p>
+<h3>5.3 Imprimir certificado</h3>
+<p>Desde el listado, clic en <strong>Imprimir</strong>. Se abre la vista del certificado (podés imprimir o guardar como PDF desde el navegador).</p>
+<h3>5.4 Vista pública por enlace (token)</h3>
+<p>Cada calibración puede tener un enlace público (token) para ver el certificado sin login: <code>.../calibracion/ver/[token]</code>. Solo lectura.</p>
+<hr>
+
+<h2>6. Reportes</h2>
+<p>Menú: <strong>Reportes</strong>. Pantalla inicial con tarjetas que llevan a cada tipo de reporte.</p>
+<h3>6.1 Reporte de Calibraciones</h3>
+<p>Filtros: Fecha desde/hasta, Patente, Calibrador. Buscar → tabla en pantalla. Botón <strong>Exportar CSV</strong>.</p>
+<h3>6.2 Reporte de Vencimientos</h3>
+<p>Filtro: Próximos días (7, 30, 60, 90). Buscar → tabla. Exportar CSV.</p>
+<h3>6.3 Reporte de Flota (Equipos)</h3>
+<p>Filtro: Transportista (opcional). Buscar → tabla. Exportar CSV.</p>
+<h3>6.4 Reporte de Transportistas</h3>
+<p>Listado completo con Cant. equipos. Exportar CSV.</p>
+<hr>
+
+<h2>7. Notificaciones (solo administradores)</h2>
+<p>Visible en el menú solo para usuarios con rol <strong>admin</strong>.</p>
+<h3>7.1 Listado</h3>
+<p>Notificaciones en el menú → listado de avisos (no leídas primero). Botón <strong>Marcar leída</strong>. Ícono de campana en el header con cantidad de no leídas.</p>
+<h3>7.2 Configuración</h3>
+<p><strong>Configurar notificaciones</strong>: Email (activo/destino), Recordatorio cada X minutos (0 = no), Calibraciones por vencer (días de aviso, 0 = no), Tipos de notificación a recibir. Guardar.</p>
+<h3>7.3 Avisos en el navegador</h3>
+<p>Puede mostrarse un aviso (toast) en el navegador cuando llega una notificación nueva.</p>
+<hr>
+
+<h2>8. Cerrar sesión</h2>
+<p>En el menú lateral, parte inferior: <strong>Salir</strong>. Clic cierra la sesión y devuelve a la pantalla de Ingresar.</p>
+<hr>
+
+<h2>9. Resumen de permisos</h2>
+<ul>
+  <li><strong>Usuarios normales (members):</strong> Dashboard, Transportistas, Equipos, Banderas, Calibradores, Cubiertas, Marcas, Nación, Calibración, Reportes. No ven Notificaciones.</li>
+  <li><strong>Administradores (admin):</strong> Todo lo anterior más Notificaciones (listado y configuración).</li>
+  <li><strong>Vista pública:</strong> solo la URL de calibración por token para ver el certificado sin login.</li>
+</ul>
+<hr>
+
+<h2>10. Notas técnicas para el administrador del sistema</h2>
+<ul>
+  <li><strong>Cron para notificaciones:</strong> configurar un cron que llame a la URL de procesamiento de recordatorios (ej. <code>.../notificaciones/procesar-recordatorios</code>) con la frecuencia deseada (ej. cada 5–15 min). Opcional: token en la URL.</li>
+  <li><strong>Email:</strong> el envío de notificaciones por correo depende de la configuración de email del servidor (CodeIgniter Email).</li>
+  <li><strong>Google Sign-In:</strong> Client ID en <code>.env</code> y orígenes/URLs autorizados en la consola de Google Cloud.</li>
+</ul>
+<hr>
+
+<p class="footer-note">Manual de usuario — Montajes Campana — Versión actual de la aplicación.</p>
+
+</body>
+</html>
