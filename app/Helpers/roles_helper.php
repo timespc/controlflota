@@ -7,23 +7,22 @@
 if (! function_exists('getRoles')) {
     /**
      * Devuelve los nombres de grupos del usuario (Ion Auth).
+     * Usa un único JOIN para evitar consultas N+1 al resolver nombres de grupo.
      *
      * @param int $user_id ID del usuario (users.id)
      * @return array<string>
      */
     function getRoles(int $user_id): array
     {
-        $userGroupModel = model('UserGroupModel');
-        $groupModel     = model('GroupModel');
-        $rows           = $userGroupModel->getRolesPorUserId($user_id);
-        $roles          = [];
-        foreach ($rows as $row) {
-            $g = $groupModel->find(is_object($row) ? $row->group_id : $row['group_id']);
-            if ($g && isset($g->name)) {
-                $roles[] = $g->name;
-            }
-        }
-        return $roles;
+        $config = config('IonAuth');
+        $tables = $config->tables;
+        $db = \Config\Database::connect();
+        $rows = $db->table($tables['users_groups'] . ' ug')
+            ->select('g.name')
+            ->join($tables['groups'] . ' g', 'g.id = ug.group_id', 'inner')
+            ->where('ug.user_id', $user_id)
+            ->get()->getResultArray();
+        return array_column($rows, 'name');
     }
 }
 

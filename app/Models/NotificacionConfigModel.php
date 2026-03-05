@@ -95,13 +95,48 @@ class NotificacionConfigModel extends BaseModel
                 }
             }
         }
+        if (empty($usuarios)) {
+            return [];
+        }
+
+        // Batch: cargar todas las configs existentes en 1 consulta
+        $todosIds = array_map(fn($u) => (int) $u['id'], $usuarios);
+        $configsExistentes = $this->whereIn('id_usuario', $todosIds)->findAll();
+        $configsPorUsuario = [];
+        foreach ($configsExistentes as $c) {
+            $configsPorUsuario[(int) $c['id_usuario']] = $c;
+        }
+
+        // Crear configs faltantes en batch
+        $insertar = [];
+        foreach ($todosIds as $uid) {
+            if (! isset($configsPorUsuario[$uid])) {
+                $insertar[] = [
+                    'id_usuario'             => $uid,
+                    'email_activo'           => 1,
+                    'push_activo'            => 1,
+                    'push_browser_activo'    => 1,
+                    'recordatorio_minutos'   => 0,
+                    'dias_aviso_vencimiento' => 30,
+                ];
+            }
+        }
+        if (! empty($insertar)) {
+            $this->insertBatch($insertar);
+            // Recargar solo las recién creadas
+            $nuevas = $this->whereIn('id_usuario', array_column($insertar, 'id_usuario'))->findAll();
+            foreach ($nuevas as $c) {
+                $configsPorUsuario[(int) $c['id_usuario']] = $c;
+            }
+        }
+
         $out = [];
         foreach ($usuarios as $u) {
             $idUsuario = (int) $u['id'];
             if (! $tipoModel->recibeTipo($idUsuario, $tipo)) {
                 continue;
             }
-            $config = $this->getOrCreate($idUsuario);
+            $config = $configsPorUsuario[$idUsuario] ?? [];
             if ($tipo === NotificacionModel::TIPO_CALIBRACION_POR_VENCER) {
                 $diasAviso = (int) ($config['dias_aviso_vencimiento'] ?? 0);
                 if ($diasAviso <= 0) {
@@ -113,9 +148,9 @@ class NotificacionConfigModel extends BaseModel
             }
             $emailDestino = ! empty($config['email_destino']) ? $config['email_destino'] : ($u['email'] ?? null);
             $out[] = [
-                'id_usuario' => $idUsuario,
-                'usuario' => ['id_usuario' => $idUsuario, 'email' => $u['email'] ?? ''],
-                'config' => $config,
+                'id_usuario'   => $idUsuario,
+                'usuario'      => ['id_usuario' => $idUsuario, 'email' => $u['email'] ?? ''],
+                'config'       => $config,
                 'email_destino' => ! empty($config['email_activo']) ? $emailDestino : null,
             ];
         }

@@ -36,7 +36,7 @@
 
       <?php if (! empty($message)): ?>
         <div class="alert alert-info alert-login alert-dismissible fade show" role="alert">
-          <?= $message ?>
+          <?= esc($message) ?>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
         </div>
       <?php endif; ?>

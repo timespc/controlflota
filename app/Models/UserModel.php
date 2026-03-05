@@ -89,6 +89,7 @@ class UserModel extends Model
     /**
      * Lista todos los usuarios para el módulo admin (id, email, first_name, last_name, active, last_login, grupos).
      * Excluye usuarios con borrado lógico.
+     * Carga grupos en 2 consultas batch (en lugar de N+1) y mapea en PHP.
      */
     public function listarParaAdmin(): array
     {
@@ -101,18 +102,41 @@ class UserModel extends Model
             $builder->where('u.deleted_at', null);
         }
         $rows = $builder->get()->getResultArray();
-        $groupModel = model(GroupModel::class);
-        $ugModel    = model(UserGroupModel::class);
+        if (empty($rows)) {
+            return [];
+        }
+
+        // Batch: todos los user_groups de los usuarios listados en 1 consulta
+        $userIds = array_column($rows, 'id');
+        $ugRows = $this->db->table($tables['users_groups'])
+            ->whereIn('user_id', $userIds)
+            ->get()->getResultArray();
+
+        // Batch: todos los grupos necesarios en 1 consulta
+        $groupIds = array_unique(array_column($ugRows, 'group_id'));
+        $groupsById = [];
+        if (! empty($groupIds)) {
+            $groupRows = $this->db->table($tables['groups'])
+                ->whereIn('id', $groupIds)
+                ->get()->getResultArray();
+            foreach ($groupRows as $g) {
+                $groupsById[(int) $g['id']] = $g['name'];
+            }
+        }
+
+        // Indexar user_groups por user_id
+        $ugByUser = [];
+        foreach ($ugRows as $ug) {
+            $ugByUser[(int) $ug['user_id']][] = (int) $ug['group_id'];
+        }
+
         $out = [];
         foreach ($rows as $r) {
             $id = (int) $r['id'];
             $grupos = [];
-            $ugRows = $ugModel->where('user_id', $id)->findAll();
-            foreach ($ugRows as $ug) {
-                $gid = is_object($ug) ? $ug->group_id : $ug['group_id'];
-                $g = $groupModel->find($gid);
-                if ($g && isset($g->name)) {
-                    $grupos[] = $g->name;
+            foreach ($ugByUser[$id] ?? [] as $gid) {
+                if (isset($groupsById[$gid])) {
+                    $grupos[] = $groupsById[$gid];
                 }
             }
             $out[] = [
@@ -249,6 +273,7 @@ class UserModel extends Model
     /**
      * Obtiene un usuario para edición (id, email, first_name, last_name, active, grupo).
      * No devuelve usuarios eliminados (borrado lógico).
+     * Resuelve grupos con un solo JOIN en lugar de N consultas separadas.
      */
     public function obtenerParaAdmin(int $id): ?array
     {
@@ -262,17 +287,15 @@ class UserModel extends Model
         if (! $row) {
             return null;
         }
-        $ugModel = model(UserGroupModel::class);
-        $groupModel = model(GroupModel::class);
-        $grupos = [];
-        $ugRows = $ugModel->where('user_id', $id)->findAll();
-        foreach ($ugRows as $ug) {
-            $gid = is_object($ug) ? $ug->group_id : $ug['group_id'];
-            $g = $groupModel->find($gid);
-            if ($g && isset($g->name)) {
-                $grupos[] = $g->name;
-            }
-        }
+
+        // Carga grupos con JOIN en 1 consulta
+        $grupoCombinado = $this->db->table($tables['users_groups'] . ' ug')
+            ->select('g.name')
+            ->join($tables['groups'] . ' g', 'g.id = ug.group_id', 'inner')
+            ->where('ug.user_id', $id)
+            ->get()->getResultArray();
+        $grupos = array_column($grupoCombinado, 'name');
+
         return [
             'id'         => (int) $row['id'],
             'email'      => $row['email'] ?? '',

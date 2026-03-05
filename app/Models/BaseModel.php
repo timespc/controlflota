@@ -46,7 +46,7 @@ class BaseModel extends Model
 
     public function get($id)
     {
-        return $this->where('id', $id)->first();
+        return $this->where($this->primaryKey, $id)->first();
     }
 
     public function store(array $data)

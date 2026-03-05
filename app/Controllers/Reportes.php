@@ -65,17 +65,23 @@ class Reportes extends BaseController
         $precinto     = $this->request->getPost('precinto') ?: null;
         $idCalibrador = $this->request->getPost('id_calibrador') ?: null;
 
+        if (! $this->esFechaYmdValida($fechaDesde)) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Fecha desde inválida (formato esperado: YYYY-MM-DD)']);
+        }
+        if (! $this->esFechaYmdValida($fechaHasta)) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Fecha hasta inválida (formato esperado: YYYY-MM-DD)']);
+        }
+        if (! $this->esIdPositivo($idCalibrador)) {
+            return $this->response->setJSON(['success' => false, 'message' => 'ID de calibrador inválido']);
+        }
+
         if ($patente !== null) {
             $patente = trim($patente);
         }
         if ($precinto !== null) {
             $precinto = trim($precinto);
         }
-        if ($idCalibrador !== null && $idCalibrador !== '') {
-            $idCalibrador = (int) $idCalibrador;
-        } else {
-            $idCalibrador = null;
-        }
+        $idCalibrador = $idCalibrador !== null ? (int) $idCalibrador : null;
 
         $filas = $this->calibracionModel->listarParaReporte($fechaDesde, $fechaHasta, $patente ?: null, $idCalibrador, $precinto ?: null);
 
@@ -96,17 +102,20 @@ class Reportes extends BaseController
         $precinto     = $this->request->getGet('precinto') ?: null;
         $idCalibrador = $this->request->getGet('id_calibrador') ?: null;
 
+        if (! $this->esFechaYmdValida($fechaDesde) || ! $this->esFechaYmdValida($fechaHasta)) {
+            return $this->response->setStatusCode(400)->setBody('Fechas inválidas');
+        }
+        if (! $this->esIdPositivo($idCalibrador)) {
+            return $this->response->setStatusCode(400)->setBody('ID de calibrador inválido');
+        }
+
         if ($patente !== null) {
             $patente = trim($patente);
         }
         if ($precinto !== null) {
             $precinto = trim($precinto);
         }
-        if ($idCalibrador !== null && $idCalibrador !== '') {
-            $idCalibrador = (int) $idCalibrador;
-        } else {
-            $idCalibrador = null;
-        }
+        $idCalibrador = $idCalibrador !== null ? (int) $idCalibrador : null;
 
         $filas = $this->calibracionModel->listarParaReporte($fechaDesde, $fechaHasta, $patente ?: null, $idCalibrador, $precinto ?: null);
 

@@ -61,8 +61,8 @@ class Calibracion extends BaseController
 
     /**
      * Añade a la unidad los textos "medida" de cada cubierta (para mostrar en vista/impresión).
-     * Los campos cubierta_*_eje* guardan el ID; aquí se resuelve contra la tabla cubiertas y se
-     * agrega cubierta_*_eje*_medida con el texto (ej. "315/80X22,5").
+     * Los campos cubierta_*_eje* guardan el ID; se resuelven en 1 consulta whereIn en lugar de
+     * hasta 9 consultas individuales.
      */
     private function agregarMedidasCubiertasEnUnidad(array $unidad): array
     {
@@ -71,14 +71,29 @@ class Calibracion extends BaseController
             'cubierta_semi_delantero_eje1', 'cubierta_semi_delantero_eje2', 'cubierta_semi_delantero_eje3',
             'cubierta_semi_trasero_eje1', 'cubierta_semi_trasero_eje2', 'cubierta_semi_trasero_eje3',
         ];
-        $cubiertasModel = model(CubiertasModel::class);
+
+        // Recolectar IDs únicos y no vacíos
+        $ids = [];
         foreach ($campos as $campo) {
             $id = isset($unidad[$campo]) ? (int) $unidad[$campo] : 0;
-            $unidad[$campo . '_medida'] = null;
             if ($id > 0) {
-                $cub = $cubiertasModel->find($id);
-                $unidad[$campo . '_medida'] = $cub['medida'] ?? null;
+                $ids[] = $id;
             }
+        }
+
+        // 1 sola consulta para todos los IDs necesarios
+        $cubiertasPorId = [];
+        if (! empty($ids)) {
+            $cubiertasModel = model(CubiertasModel::class);
+            $rows = $cubiertasModel->whereIn('id_cubierta', array_unique($ids))->findAll();
+            foreach ($rows as $row) {
+                $cubiertasPorId[(int) $row['id_cubierta']] = $row['medida'] ?? null;
+            }
+        }
+
+        foreach ($campos as $campo) {
+            $id = isset($unidad[$campo]) ? (int) $unidad[$campo] : 0;
+            $unidad[$campo . '_medida'] = $id > 0 ? ($cubiertasPorId[$id] ?? null) : null;
         }
         return $unidad;
     }
@@ -286,6 +301,20 @@ class Calibracion extends BaseController
                 'message' => 'La patente es obligatoria',
                 'errors' => ['patente' => 'La patente es obligatoria']
             ]);
+        }
+
+        $fechaCalib = $input['fecha_calib'] ?? null;
+        $vtoCalib   = $input['vto_calib'] ?? null;
+        $idCal      = $input['id_calibrador'] ?? null;
+
+        if ($fechaCalib !== null && $fechaCalib !== '' && ! $this->esFechaYmdValida((string) $fechaCalib)) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Fecha de calibración inválida (formato esperado: YYYY-MM-DD)', 'errors' => ['fecha_calib' => 'Fecha inválida']]);
+        }
+        if ($vtoCalib !== null && $vtoCalib !== '' && ! $this->esFechaYmdValida((string) $vtoCalib)) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Fecha de vencimiento inválida (formato esperado: YYYY-MM-DD)', 'errors' => ['vto_calib' => 'Fecha inválida']]);
+        }
+        if ($idCal !== null && $idCal !== '' && ! $this->esIdPositivo($idCal)) {
+            return $this->response->setJSON(['success' => false, 'message' => 'ID de calibrador inválido', 'errors' => ['id_calibrador' => 'ID inválido']]);
         }
 
         $cabecera = [
