@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -146,7 +147,7 @@ class Auth extends BaseController
      */
     protected function redirectByGroup()
     {
-        $userId = $this->ionAuth->getUserId();
+        $userId = (int) $this->ionAuth->getUserId();
         if ($userId && $this->modelUser->getMustChangePassword($userId)) {
             return redirect()->to(site_url('auth/cambiar-contrasena'))->withCookies();
         }
@@ -188,7 +189,7 @@ class Auth extends BaseController
         if (! $this->ionAuth->loggedIn()) {
             return redirect()->to(site_url('auth/login'));
         }
-        $userId = $this->ionAuth->getUserId();
+        $userId = (int) $this->ionAuth->getUserId();
         if (! $userId || ! $this->modelUser->getMustChangePassword($userId)) {
             return redirect()->to(site_url());
         }

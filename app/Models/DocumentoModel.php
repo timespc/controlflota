@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -13,7 +14,9 @@ class DocumentoModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $useTimestamps    = false;
+    protected $useTimestamps    = true;
+    protected $createdField     = 'created_at';
+    protected $updatedField     = '';
     protected $allowedFields    = [
         'tipo_entidad',
         'id_entidad',
@@ -22,7 +25,6 @@ class DocumentoModel extends Model
         'extension',
         'mime_type',
         'tamano',
-        'created_at',
     ];
 
     public const TIPO_TRANSPORTISTA = 'transportista';

@@ -22,7 +22,7 @@ if (! function_exists('usuario_actual')) {
         $userId = $ionAuth->getUserId();
         $email  = session()->get('email') ?: session()->get('identity');
         helper('roles');
-        $roles = getRoles($userId);
+        $roles = getRoles((int) $userId);
         $rolNombre = 'calibrador';
         if (in_array('admin', $roles, true)) {
             $rolNombre = 'admin';

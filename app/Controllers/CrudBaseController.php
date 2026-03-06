@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -29,6 +30,12 @@ abstract class CrudBaseController extends BaseController
 
     /** Método del modelo para total (opcional, ej. obtenerTotal). Vacío = no exponer total() */
     protected string $crudTotalMethod = 'obtenerTotal';
+
+    /** Campo ID para dropdown opciones (ej. id_inspector). Vacío = no exponer opciones() */
+    protected string $crudOpcionesIdField = '';
+
+    /** Campo label para dropdown opciones (ej. inspector). Vacío = usa crudFieldName */
+    protected string $crudOpcionesLabelField = '';
 
     /** Sufijos para mensajes (género): eliminada/eliminado, actualizada/actualizado, creada/creado */
     protected string $crudEliminadoSuffix   = 'eliminada';
@@ -172,6 +179,30 @@ abstract class CrudBaseController extends BaseController
             return $this->response->setJSON(json_response(false, [
                 'message' => 'Error: ' . $e->getMessage(),
             ]));
+        }
+    }
+
+    /**
+     * Listar registros para dropdown (id, label). Requiere crudOpcionesIdField configurado.
+     */
+    public function opciones()
+    {
+        if ($this->crudOpcionesIdField === '') {
+            return $this->response->setJSON(json_response(false, ['message' => 'Opciones no configuradas', 'data' => []]));
+        }
+        try {
+            $idField    = $this->crudOpcionesIdField;
+            $labelField = $this->crudOpcionesLabelField !== '' ? $this->crudOpcionesLabelField : $this->crudFieldName;
+            $lista = $this->getCrudModel()->listarTodos();
+            $data  = array_map(function ($r) use ($idField, $labelField) {
+                return [
+                    $idField    => (int) ($r[$idField] ?? 0),
+                    $labelField => $r[$labelField] ?? '',
+                ];
+            }, $lista);
+            return $this->response->setJSON(json_response(true, ['data' => $data]));
+        } catch (\Exception $e) {
+            return $this->response->setJSON(json_response(false, ['message' => $e->getMessage(), 'data' => []]));
         }
     }
 

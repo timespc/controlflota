@@ -34,8 +34,6 @@ $routes->get('notificaciones/contar-no-leidas', 'Notificaciones::contarNoLeidas'
 $routes->get('notificaciones/estado-push', 'Notificaciones::estadoPush', ['filter' => 'checkLogin:admin']);
 $routes->post('notificaciones/marcar-leida', 'Notificaciones::marcarLeida', ['filter' => 'checkLogin:admin']);
 $routes->post('notificaciones/marcar-todas-leidas', 'Notificaciones::marcarTodasLeidas', ['filter' => 'checkLogin:admin']);
-$routes->post('notificaciones/aprobar-usuario/(:num)', 'Notificaciones::aprobarUsuario/$1', ['filter' => 'checkLogin:admin']);
-$routes->post('notificaciones/rechazar-usuario/(:num)', 'Notificaciones::rechazarUsuario/$1', ['filter' => 'checkLogin:admin']);
 $routes->get('notificaciones/procesar-recordatorios', 'Notificaciones::procesarRecordatorios', ['filter' => 'checkLogin:admin']);
 
 // Usuarios (solo Admin): gestión de usuarios que pueden entrar con Google

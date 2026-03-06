@@ -23,11 +23,8 @@ if (! function_exists('json_response')) {
     function json_response(bool $success, array $options = []): array
     {
         $out = ['success' => $success];
-        $allowed = ['message', 'data', 'errors', 'id', 'total'];
-        foreach ($allowed as $key) {
-            if (array_key_exists($key, $options)) {
-                $out[$key] = $options[$key];
-            }
+        foreach ($options as $key => $value) {
+            $out[$key] = $value;
         }
         return $out;
     }

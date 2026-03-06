@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -533,8 +534,10 @@ class CalibracionModel extends BaseModel
         $id = isset($cabecera['id_calibracion']) ? (int) $cabecera['id_calibracion'] : 0;
         unset($cabecera['id_calibracion']);
 
+        $this->db->transStart();
+
         if ($id > 0) {
-            unset($cabecera['token_publico']); // no actualizar token en edición
+            unset($cabecera['token_publico']);
             $this->update($id, $cabecera);
             $detalleModel = model(CalibracionDetalleModel::class);
             $detalleModel->eliminarPorCalibracion($id);
@@ -587,6 +590,12 @@ class CalibracionModel extends BaseModel
             $numeroLinea++;
         }
 
+        $this->db->transComplete();
+
+        if (! $this->db->transStatus()) {
+            throw new \RuntimeException('Error al guardar la calibración: transacción fallida.');
+        }
+
         return $idCalib;
     }
 
@@ -615,8 +624,11 @@ class CalibracionModel extends BaseModel
      */
     public function eliminarCalibracion(int $id): bool
     {
+        $this->db->transStart();
         $detalleModel = model(CalibracionDetalleModel::class);
         $detalleModel->eliminarPorCalibracion($id);
-        return $this->delete($id);
+        $this->delete($id);
+        $this->db->transComplete();
+        return $this->db->transStatus();
     }
 }

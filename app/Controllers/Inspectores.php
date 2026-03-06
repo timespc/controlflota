@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -15,35 +16,11 @@ class Inspectores extends CrudBaseController
     protected string $crudEliminadoSuffix   = 'eliminado';
     protected string $crudActualizadoSuffix = 'actualizado';
     protected string $crudCreadoSuffix     = 'creado';
+    protected string $crudOpcionesIdField    = 'id_inspector';
+    protected string $crudOpcionesLabelField = 'inspector';
 
     public function index()
     {
         return view('inspectores/index', ['titulo' => 'Inspectores']);
-    }
-
-    /**
-     * Listar inspectores para dropdown (id_inspector, inspector).
-     */
-    public function opciones()
-    {
-        try {
-            $lista = $this->getCrudModel()->listarTodos();
-            $data  = array_map(function ($r) {
-                return [
-                    'id_inspector' => (int) $r['id_inspector'],
-                    'inspector'    => $r['inspector'] ?? '',
-                ];
-            }, $lista);
-            return $this->response->setJSON([
-                'success' => true,
-                'data'    => $data,
-            ]);
-        } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'success' => false,
-                'data'    => [],
-                'message' => $e->getMessage(),
-            ]);
-        }
     }
 }

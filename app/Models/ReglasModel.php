@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -102,6 +103,8 @@ class ReglasModel extends BaseModel
         $id = isset($data['id_regla']) ? (int) $data['id_regla'] : 0;
         unset($data['id_regla']);
 
+        $this->db->transStart();
+
         $habilitada = isset($data['habilitada']) ? (int) $data['habilitada'] : 0;
         if ($habilitada === 1) {
             $builder = $this->where('habilitada', 1);
@@ -112,9 +115,14 @@ class ReglasModel extends BaseModel
         }
 
         if ($id > 0) {
-            return $this->update($id, $data);
+            $result = $this->update($id, $data);
+        } else {
+            $result = $this->insert($data);
         }
-        return $this->insert($data);
+
+        $this->db->transComplete();
+
+        return $this->db->transStatus() ? $result : false;
     }
 
     /**

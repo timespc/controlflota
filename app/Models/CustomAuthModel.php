@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -45,7 +46,7 @@ class CustomAuthModel extends IonAuthModel
         $user = $query->getRow();
         if (isset($user)) {
             $this->setSessionForGoogle($user);
-            $this->updateLastLogin($user->id);
+            $this->updateLastLogin((int) $user->id);
             $this->clearLoginAttempts($identity);
             $this->session->regenerate(false);
             $this->triggerEvents(['post_login', 'post_login_successful']);
@@ -65,8 +66,8 @@ class CustomAuthModel extends IonAuthModel
         $sessionData = [
             $identityCol => $user->email,
             'email'      => $user->email,
-            'user_id'    => $user->id,
-            'id'         => $user->id,
+            'user_id'    => (int) $user->id,
+            'id'         => (int) $user->id,
             'old_last_login' => $user->last_login,
             'last_check' => time(),
         ];

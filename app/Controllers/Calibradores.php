@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -15,35 +16,11 @@ class Calibradores extends CrudBaseController
     protected string $crudEliminadoSuffix   = 'eliminado';
     protected string $crudActualizadoSuffix = 'actualizado';
     protected string $crudCreadoSuffix     = 'creado';
+    protected string $crudOpcionesIdField    = 'id_calibrador';
+    protected string $crudOpcionesLabelField = 'calibrador';
 
     public function index()
     {
         return view('calibradores/index', ['titulo' => 'Calibradores']);
-    }
-
-    /**
-     * Listar calibradores para dropdown (id_calibrador, calibrador).
-     */
-    public function opciones()
-    {
-        try {
-            $lista = $this->getCrudModel()->listarTodos();
-            $data  = array_map(function ($r) {
-                return [
-                    'id_calibrador' => (int) $r['id_calibrador'],
-                    'calibrador'    => $r['calibrador'] ?? '',
-                ];
-            }, $lista);
-            return $this->response->setJSON([
-                'success' => true,
-                'data'    => $data,
-            ]);
-        } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'success' => false,
-                'data'    => [],
-                'message' => $e->getMessage(),
-            ]);
-        }
     }
 }

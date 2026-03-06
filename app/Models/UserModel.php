@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -219,12 +220,17 @@ class UserModel extends Model
         if ($this->db->fieldExists('must_change_password', $tables['users'])) {
             $data['must_change_password'] = 1;
         }
+        $this->db->transStart();
         $this->db->table($tables['users'])->insert($data);
         $userId = (int) $this->db->insertID();
         $this->db->table($tables['users_groups'])->insert([
             'user_id'  => $userId,
             'group_id' => $groupId,
         ]);
+        $this->db->transComplete();
+        if (! $this->db->transStatus()) {
+            throw new \RuntimeException('Error al crear el usuario: transacción fallida.');
+        }
         return $userId;
     }
 

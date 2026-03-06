@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -42,11 +43,15 @@ class Notificaciones extends BaseController
     public function contarNoLeidas()
     {
         if (! function_exists('es_admin') || ! es_admin()) {
-            return $this->response->setJSON(['count' => 0]);
+            return $this->response->setJSON(json_response(true, ['count' => 0]));
         }
-        $u = usuario_actual();
-        $count = model(NotificacionModel::class)->contarNoLeidas((int) $u['id_usuario']);
-        return $this->response->setJSON(['count' => $count]);
+        try {
+            $u = usuario_actual();
+            $count = model(NotificacionModel::class)->contarNoLeidas((int) $u['id_usuario']);
+            return $this->response->setJSON(json_response(true, ['count' => $count]));
+        } catch (\Throwable $e) {
+            return $this->response->setJSON(json_response(false, ['message' => $e->getMessage(), 'count' => 0]));
+        }
     }
 
     /**
@@ -56,36 +61,40 @@ class Notificaciones extends BaseController
     public function estadoPush()
     {
         if (! function_exists('es_admin') || ! es_admin()) {
-            return $this->response->setJSON(['count' => 0, 'ultima' => null]);
+            return $this->response->setJSON(json_response(true, ['count' => 0, 'ultima' => null]));
         }
-        $u = usuario_actual();
-        $idAdmin = (int) $u['id_usuario'];
-        $configModel = model(NotificacionConfigModel::class);
-        $config = $configModel->getOrCreate($idAdmin);
-        $pushBrowserActivo = ! isset($config['push_browser_activo']) || ! empty($config['push_browser_activo']);
-        if (isset($config['push_activo']) && empty($config['push_activo'])) {
-            return $this->response->setJSON(['count' => 0, 'ultima' => null, 'push_browser_activo' => $pushBrowserActivo]);
-        }
-        $tipoModel = model(NotificacionConfigTipoModel::class);
-        $tiposDisponibles = NotificacionModel::getTiposDisponibles();
-        $tiposActivos = $tipoModel->getTiposPorUsuario($idAdmin, $tiposDisponibles);
-        $tiposFiltro = array_keys(array_filter($tiposActivos));
-        $model = model(NotificacionModel::class);
-        $count = $model->contarNoLeidas($idAdmin, $tiposFiltro);
-        $ultima = $model->ultimaNoLeida($idAdmin, $tiposFiltro);
-        $data = [
-            'count' => $count,
-            'ultima' => null,
-            'push_browser_activo' => $pushBrowserActivo,
-        ];
-        if ($ultima) {
-            $data['ultima'] = [
-                'titulo' => $ultima['titulo'],
-                'mensaje' => $ultima['mensaje'] ?: '',
-                'url' => site_url('notificaciones')
+        try {
+            $u = usuario_actual();
+            $idAdmin = (int) $u['id_usuario'];
+            $configModel = model(NotificacionConfigModel::class);
+            $config = $configModel->getOrCreate($idAdmin);
+            $pushBrowserActivo = ! isset($config['push_browser_activo']) || ! empty($config['push_browser_activo']);
+            if (isset($config['push_activo']) && empty($config['push_activo'])) {
+                return $this->response->setJSON(json_response(true, ['count' => 0, 'ultima' => null, 'push_browser_activo' => $pushBrowserActivo]));
+            }
+            $tipoModel = model(NotificacionConfigTipoModel::class);
+            $tiposDisponibles = NotificacionModel::getTiposDisponibles();
+            $tiposActivos = $tipoModel->getTiposPorUsuario($idAdmin, $tiposDisponibles);
+            $tiposFiltro = array_keys(array_filter($tiposActivos));
+            $model = model(NotificacionModel::class);
+            $count = $model->contarNoLeidas($idAdmin, $tiposFiltro);
+            $ultima = $model->ultimaNoLeida($idAdmin, $tiposFiltro);
+            $out = [
+                'count' => $count,
+                'ultima' => null,
+                'push_browser_activo' => $pushBrowserActivo,
             ];
+            if ($ultima) {
+                $out['ultima'] = [
+                    'titulo' => $ultima['titulo'],
+                    'mensaje' => $ultima['mensaje'] ?: '',
+                    'url' => site_url('notificaciones'),
+                ];
+            }
+            return $this->response->setJSON(json_response(true, $out));
+        } catch (\Throwable $e) {
+            return $this->response->setJSON(json_response(false, ['message' => $e->getMessage(), 'count' => 0, 'ultima' => null]));
         }
-        return $this->response->setJSON($data);
     }
 
     /**
@@ -94,15 +103,19 @@ class Notificaciones extends BaseController
     public function marcarLeida()
     {
         if (! function_exists('es_admin') || ! es_admin()) {
-            return $this->response->setJSON(['success' => false]);
+            return $this->response->setJSON(json_response(false, ['message' => 'Sin permiso']));
         }
-        $idNotif = (int) $this->request->getPost('id_notificacion');
-        if ($idNotif <= 0) {
-            return $this->response->setJSON(['success' => false]);
+        try {
+            $idNotif = (int) $this->request->getPost('id_notificacion');
+            if ($idNotif <= 0) {
+                return $this->response->setJSON(json_response(false, ['message' => 'ID inválido']));
+            }
+            $u = usuario_actual();
+            model(NotificacionModel::class)->marcarLeida($idNotif, (int) $u['id_usuario']);
+            return $this->response->setJSON(json_response(true, []));
+        } catch (\Throwable $e) {
+            return $this->response->setJSON(json_response(false, ['message' => $e->getMessage()]));
         }
-        $u = usuario_actual();
-        model(NotificacionModel::class)->marcarLeida($idNotif, (int) $u['id_usuario']);
-        return $this->response->setJSON(['success' => true]);
     }
 
     /**
@@ -111,27 +124,15 @@ class Notificaciones extends BaseController
     public function marcarTodasLeidas()
     {
         if (! function_exists('es_admin') || ! es_admin()) {
-            return $this->response->setJSON(['success' => false]);
+            return $this->response->setJSON(json_response(false, ['message' => 'Sin permiso']));
         }
-        $u = usuario_actual();
-        model(NotificacionModel::class)->marcarTodasLeidas((int) $u['id_usuario']);
-        return $this->response->setJSON(['success' => true]);
-    }
-
-    /**
-     * Aprobar usuario (flujo antiguo con tabla usuarios). Deshabilitado con Ion Auth.
-     */
-    public function aprobarUsuario(int $idUsuario = 0)
-    {
-        return redirect()->to(site_url('notificaciones'))->with('error', 'Flujo deshabilitado.');
-    }
-
-    /**
-     * Rechazar usuario (flujo antiguo con tabla usuarios). Deshabilitado con Ion Auth.
-     */
-    public function rechazarUsuario(int $idUsuario = 0)
-    {
-        return redirect()->to(site_url('notificaciones'))->with('error', 'Flujo deshabilitado.');
+        try {
+            $u = usuario_actual();
+            model(NotificacionModel::class)->marcarTodasLeidas((int) $u['id_usuario']);
+            return $this->response->setJSON(json_response(true, []));
+        } catch (\Throwable $e) {
+            return $this->response->setJSON(json_response(false, ['message' => $e->getMessage()]));
+        }
     }
 
     /**

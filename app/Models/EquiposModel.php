@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -93,151 +94,75 @@ class EquiposModel extends BaseModel
     ];
     
     /**
-     * Lista todas las unidades para DataTable
+     * Prepara el builder con SELECT y JOINs comunes (transportistas, banderas, marcas).
+     */
+    private function builderConRelaciones(): self
+    {
+        $db = \Config\Database::connect();
+        $selectFields = ['equipos.*'];
+        $joins = [];
+
+        foreach ([
+            'transportistas' => ['field' => 'transportistas.transportista', 'on' => 'transportistas.id_tta = equipos.id_tta'],
+            'banderas'       => ['field' => 'banderas.bandera as bandera_nombre', 'on' => 'banderas.id_bandera = equipos.id_bandera'],
+            'marcas'         => ['field' => 'marcas.marca as marca_nombre', 'on' => 'marcas.id_marca = equipos.id_marca'],
+        ] as $table => $cfg) {
+            if ($db->tableExists($table)) {
+                $selectFields[] = $cfg['field'];
+                $joins[] = [$table, $cfg['on']];
+            } else {
+                $alias = explode(' as ', $cfg['field']);
+                $selectFields[] = 'NULL as ' . (count($alias) > 1 ? $alias[1] : $table);
+            }
+        }
+
+        $builder = $this->select($selectFields);
+        foreach ($joins as [$table, $on]) {
+            $builder->join($table, $on, 'left');
+        }
+        return $builder;
+    }
+
+    /**
+     * Lista todas las unidades para DataTable.
      */
     public function listarTodos()
     {
-        $db = \Config\Database::connect();
-        
-        // Construir campos SELECT
-        $selectFields = ['equipos.*'];
-        
-        // JOIN con transportistas (si existe)
-        if ($db->tableExists('transportistas')) {
-            $selectFields[] = 'transportistas.transportista';
-        } else {
-            $selectFields[] = "NULL as transportista";
-        }
-        
-        // JOIN con banderas (si existe)
-        if ($db->tableExists('banderas')) {
-            $selectFields[] = 'banderas.bandera as bandera_nombre';
-        } else {
-            $selectFields[] = "NULL as bandera_nombre";
-        }
-        
-        // JOIN con marcas (si existe)
-        if ($db->tableExists('marcas')) {
-            $selectFields[] = 'marcas.marca as marca_nombre';
-        } else {
-            $selectFields[] = "NULL as marca_nombre";
-        }
-        
-        $builder = $this->select($selectFields);
-        
-        // Hacer JOINs solo si las tablas existen
-        if ($db->tableExists('transportistas')) {
-            $builder->join('transportistas', 'transportistas.id_tta = equipos.id_tta', 'left');
-        }
-        if ($db->tableExists('banderas')) {
-            $builder->join('banderas', 'banderas.id_bandera = equipos.id_bandera', 'left');
-        }
-        if ($db->tableExists('marcas')) {
-            $builder->join('marcas', 'marcas.id_marca = equipos.id_marca', 'left');
-        }
-        
-        return $builder->orderBy('equipos.id_equipo', 'DESC')->findAll();
+        return $this->builderConRelaciones()
+            ->orderBy('equipos.id_equipo', 'DESC')
+            ->findAll();
     }
 
     /**
      * Lista unidades con filtros opcionales (transportista, patentes).
-     * @param int|null $id_tta
-     * @param string $patente_tractor
-     * @param string $patente (semi 1)
-     * @param string $patente_semi_trasero (semi 2)
      */
     public function listarConFiltros(?int $id_tta = null, string $patente_tractor = '', string $patente = '', string $patente_semi_trasero = ''): array
     {
-        $db = \Config\Database::connect();
-        $selectFields = ['equipos.*'];
-        if ($db->tableExists('transportistas')) {
-            $selectFields[] = 'transportistas.transportista';
-        } else {
-            $selectFields[] = "NULL as transportista";
-        }
-        if ($db->tableExists('banderas')) {
-            $selectFields[] = 'banderas.bandera as bandera_nombre';
-        } else {
-            $selectFields[] = "NULL as bandera_nombre";
-        }
-        if ($db->tableExists('marcas')) {
-            $selectFields[] = 'marcas.marca as marca_nombre';
-        } else {
-            $selectFields[] = "NULL as marca_nombre";
-        }
-        $builder = $this->select($selectFields);
-        if ($db->tableExists('transportistas')) {
-            $builder->join('transportistas', 'transportistas.id_tta = equipos.id_tta', 'left');
-        }
-        if ($db->tableExists('banderas')) {
-            $builder->join('banderas', 'banderas.id_bandera = equipos.id_bandera', 'left');
-        }
-        if ($db->tableExists('marcas')) {
-            $builder->join('marcas', 'marcas.id_marca = equipos.id_marca', 'left');
-        }
+        $builder = $this->builderConRelaciones();
+
         if ($id_tta !== null && $id_tta > 0) {
             $builder->where('equipos.id_tta', $id_tta);
         }
-        $patente_tractor = trim($patente_tractor);
-        if ($patente_tractor !== '') {
-            $builder->like('equipos.patente_tractor', $patente_tractor, 'both');
+        if (($pt = trim($patente_tractor)) !== '') {
+            $builder->like('equipos.patente_tractor', $pt, 'both');
         }
-        $patente = trim($patente);
-        if ($patente !== '') {
-            $builder->like('equipos.patente_semi_delantero', $patente, 'both');
+        if (($p = trim($patente)) !== '') {
+            $builder->like('equipos.patente_semi_delantero', $p, 'both');
         }
-        $patente_semi_trasero = trim($patente_semi_trasero);
-        if ($patente_semi_trasero !== '') {
-            $builder->like('equipos.patente_semi_trasero', $patente_semi_trasero, 'both');
+        if (($pst = trim($patente_semi_trasero)) !== '') {
+            $builder->like('equipos.patente_semi_trasero', $pst, 'both');
         }
         return $builder->orderBy('equipos.id_equipo', 'DESC')->findAll();
     }
-    
+
     /**
-     * Obtiene una unidad por ID con relaciones
+     * Obtiene una unidad por ID con relaciones.
      */
     public function obtenerPorId($id)
     {
-        $db = \Config\Database::connect();
-        
-        // Construir campos SELECT
-        $selectFields = ['equipos.*'];
-        
-        // JOIN con transportistas (si existe)
-        if ($db->tableExists('transportistas')) {
-            $selectFields[] = 'transportistas.transportista';
-        } else {
-            $selectFields[] = "NULL as transportista";
-        }
-        
-        // JOIN con banderas (si existe)
-        if ($db->tableExists('banderas')) {
-            $selectFields[] = 'banderas.bandera as bandera_nombre';
-        } else {
-            $selectFields[] = "NULL as bandera_nombre";
-        }
-        
-        // JOIN con marcas (si existe)
-        if ($db->tableExists('marcas')) {
-            $selectFields[] = 'marcas.marca as marca_nombre';
-        } else {
-            $selectFields[] = "NULL as marca_nombre";
-        }
-        
-        $builder = $this->select($selectFields);
-        
-        // Hacer JOINs solo si las tablas existen
-        if ($db->tableExists('transportistas')) {
-            $builder->join('transportistas', 'transportistas.id_tta = equipos.id_tta', 'left');
-        }
-        if ($db->tableExists('banderas')) {
-            $builder->join('banderas', 'banderas.id_bandera = equipos.id_bandera', 'left');
-        }
-        if ($db->tableExists('marcas')) {
-            $builder->join('marcas', 'marcas.id_marca = equipos.id_marca', 'left');
-        }
-        
-        return $builder->where('equipos.id_equipo', $id)->first();
+        return $this->builderConRelaciones()
+            ->where('equipos.id_equipo', $id)
+            ->first();
     }
     
     /**

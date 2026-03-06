@@ -26,22 +26,3 @@ if (! function_exists('getRoles')) {
     }
 }
 
-if (! function_exists('protegerElemento')) {
-    /**
-     * Indica si el usuario actual tiene uno de los roles permitidos.
-     *
-     * @param array<string> $roles_permitidos
-     * @return bool
-     */
-    function protegerElemento(array $roles_permitidos): bool
-    {
-        $ionAuth = new \App\Libraries\CustomAuth();
-        $roles   = getRoles($ionAuth->getUserId());
-        foreach ($roles as $rol) {
-            if (in_array($rol, $roles_permitidos, true)) {
-                return true;
-            }
-        }
-        return false;
-    }
-}

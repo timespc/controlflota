@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -131,12 +132,12 @@ class Calibracion extends BaseController
         try {
             $model = model(CalibracionModel::class);
             $data = $model->listarParaDataTable($numero, $patente);
-            return $this->response->setJSON(['data' => $data]);
+            return $this->response->setJSON(json_response(true, ['data' => $data]));
         } catch (\Exception $e) {
-            return $this->response->setJSON([
-                'data' => [],
-                'error' => $e->getMessage()
-            ]);
+            return $this->response->setJSON(json_response(false, [
+                'message' => $e->getMessage(),
+                'data'    => [],
+            ]));
         }
     }
 

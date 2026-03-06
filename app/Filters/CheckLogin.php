@@ -48,7 +48,7 @@ class CheckLogin implements FilterInterface
             return redirect()->to(site_url('auth/login'));
         }
 
-        $userId = $ionAuth->getUserId();
+        $userId = (int) $ionAuth->getUserId();
         $cambiarContrasenaUri = 'auth/cambiar-contrasena';
         $logoutUri = 'auth/logout';
         $session = \Config\Services::session();
@@ -64,7 +64,7 @@ class CheckLogin implements FilterInterface
         // Acceso controlado solo por Ion Auth (tabla users). La tabla usuarios ya no se usa para estado pendiente/rechazado.
         if ($arguments !== null && $arguments !== []) {
             helper('roles');
-            $roles = getRoles($ionAuth->getUserId());
+            $roles = getRoles($userId);
             $permitido = false;
             foreach ($roles as $rol) {
                 if (in_array($rol, $arguments, true)) {

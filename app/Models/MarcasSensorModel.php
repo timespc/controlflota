@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -47,13 +48,7 @@ class MarcasSensorModel extends BaseModel
 
     public function guardarMarca(array $data)
     {
-        $id = $data['id_marca_sensor'] ?? null;
-        unset($data['id_marca_sensor']);
-
-        if ($id && (int) $id > 0) {
-            return $this->update($id, $data);
-        }
-        return $this->insert($data);
+        return $this->store($data);
     }
 
     public function eliminarMarca($id)

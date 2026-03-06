@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -53,13 +54,7 @@ class ItemsCensoModel extends BaseModel
      */
     public function guardarItemCenso(array $data)
     {
-        $id = $data['id_item_censo'] ?? null;
-        unset($data['id_item_censo']);
-
-        if ($id && (int) $id > 0) {
-            return $this->update($id, $data);
-        }
-        return $this->insert($data);
+        return $this->store($data);
     }
 
     /**

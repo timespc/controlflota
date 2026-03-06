@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -49,14 +50,18 @@ class Documentos extends BaseController
         if (! $this->entidadExiste($tipo, $idEntidad)) {
             return $this->response->setJSON(json_response(false, ['message' => 'Recurso no encontrado', 'data' => []]));
         }
-        $model = model(DocumentoModel::class);
-        $tipoAlmacen = $this->tipoEntidadParaAlmacenamiento($tipo);
-        $lista = $model->listarPorEntidad($tipoAlmacen, $idEntidad);
-        foreach ($lista as &$doc) {
-            $doc['url_ver'] = site_url('documentos/ver/' . $doc['id']);
-            $doc['es_imagen'] = $doc['mime_type'] && in_array($doc['mime_type'], self::MIME_IMAGEN, true);
+        try {
+            $model = model(DocumentoModel::class);
+            $tipoAlmacen = $this->tipoEntidadParaAlmacenamiento($tipo);
+            $lista = $model->listarPorEntidad($tipoAlmacen, $idEntidad);
+            foreach ($lista as &$doc) {
+                $doc['url_ver'] = site_url('documentos/ver/' . $doc['id']);
+                $doc['es_imagen'] = $doc['mime_type'] && in_array($doc['mime_type'], self::MIME_IMAGEN, true);
+            }
+            return $this->response->setJSON(json_response(true, ['data' => $lista]));
+        } catch (\Throwable $e) {
+            return $this->response->setJSON(json_response(false, ['message' => 'Error al listar documentos: ' . $e->getMessage(), 'data' => []]));
         }
-        return $this->response->setJSON(json_response(true, ['data' => $lista]));
     }
 
     /**
@@ -71,6 +76,7 @@ class Documentos extends BaseController
         if (! $this->entidadExiste($tipo, $idEntidad)) {
             return $this->response->setJSON(json_response(false, ['message' => 'Recurso no encontrado']));
         }
+        try {
         $file = $this->request->getFile('archivo');
         if (! $file || ! $file->isValid()) {
             return $this->response->setJSON(json_response(false, ['message' => 'No se envió ningún archivo o el archivo no es válido.']));
@@ -92,6 +98,13 @@ class Documentos extends BaseController
         if (! $file->move($dirBase, $nombreArchivo)) {
             return $this->response->setJSON(json_response(false, ['message' => 'Error al guardar el archivo.']));
         }
+        $mimeReal = mime_content_type($dirBase . $nombreArchivo);
+        $mimesPermitidos = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'application/pdf'];
+        if (! $mimeReal || ! in_array($mimeReal, $mimesPermitidos, true)) {
+            @unlink($dirBase . $nombreArchivo);
+            return $this->response->setJSON(json_response(false, ['message' => 'El contenido del archivo no coincide con un tipo permitido.']));
+        }
+
         $model = model(DocumentoModel::class);
         $model->insert([
             'tipo_entidad'   => $tipoAlmacen,
@@ -99,11 +112,13 @@ class Documentos extends BaseController
             'nombre_original' => $nombreOriginal,
             'nombre_archivo' => $nombreArchivo,
             'extension'     => $ext,
-            'mime_type'     => $file->getClientMimeType(),
+            'mime_type'     => $mimeReal,
             'tamano'        => $file->getSize(),
-            'created_at'    => date('Y-m-d H:i:s'),
         ]);
         return $this->response->setJSON(json_response(true, ['message' => 'Documento subido correctamente.']));
+        } catch (\Throwable $e) {
+            return $this->response->setJSON(json_response(false, ['message' => 'Error al subir documento: ' . $e->getMessage()]));
+        }
     }
 
     /**
@@ -114,25 +129,29 @@ class Documentos extends BaseController
         if ($id <= 0) {
             return $this->response->setStatusCode(404);
         }
-        $model = model(DocumentoModel::class);
-        $doc = $model->getById($id);
-        if (! $doc) {
-            return $this->response->setStatusCode(404);
+        try {
+            $model = model(DocumentoModel::class);
+            $doc = $model->getById($id);
+            if (! $doc) {
+                return $this->response->setStatusCode(404);
+            }
+            $tipo = $doc['tipo_entidad'] ?? '';
+            $idEntidad = (int) ($doc['id_entidad'] ?? 0);
+            if (! $this->entidadExiste($tipo, $idEntidad)) {
+                return $this->response->setStatusCode(404);
+            }
+            $path = WRITEPATH . 'uploads/documentos/' . $doc['tipo_entidad'] . '/' . $doc['id_entidad'] . '/' . $doc['nombre_archivo'];
+            if (! is_file($path)) {
+                return $this->response->setStatusCode(404);
+            }
+            $mime = $doc['mime_type'] ?: 'application/octet-stream';
+            $this->response->setHeader('Content-Type', $mime);
+            $this->response->setHeader('Content-Disposition', 'inline; filename="' . str_replace('"', '%22', $doc['nombre_original']) . '"');
+            $this->response->setHeader('Content-Length', (string) filesize($path));
+            return $this->response->setBody(file_get_contents($path));
+        } catch (\Throwable $e) {
+            return $this->response->setStatusCode(500)->setBody('Error al obtener documento.');
         }
-        $tipo = $doc['tipo_entidad'] ?? '';
-        $idEntidad = (int) ($doc['id_entidad'] ?? 0);
-        if (! $this->entidadExiste($tipo, $idEntidad)) {
-            return $this->response->setStatusCode(404);
-        }
-        $path = WRITEPATH . 'uploads/documentos/' . $doc['tipo_entidad'] . '/' . $doc['id_entidad'] . '/' . $doc['nombre_archivo'];
-        if (! is_file($path)) {
-            return $this->response->setStatusCode(404);
-        }
-        $mime = $doc['mime_type'] ?: 'application/octet-stream';
-        $this->response->setHeader('Content-Type', $mime);
-        $this->response->setHeader('Content-Disposition', 'inline; filename="' . str_replace('"', '%22', $doc['nombre_original']) . '"');
-        $this->response->setHeader('Content-Length', (string) filesize($path));
-        return $this->response->setBody(file_get_contents($path));
     }
 
     /**
@@ -143,21 +162,25 @@ class Documentos extends BaseController
         if ($id <= 0) {
             return $this->response->setJSON(json_response(false, ['message' => 'ID inválido']));
         }
-        $model = model(DocumentoModel::class);
-        $doc = $model->getById($id);
-        if (! $doc) {
-            return $this->response->setJSON(json_response(false, ['message' => 'Documento no encontrado']));
+        try {
+            $model = model(DocumentoModel::class);
+            $doc = $model->getById($id);
+            if (! $doc) {
+                return $this->response->setJSON(json_response(false, ['message' => 'Documento no encontrado']));
+            }
+            $tipo = $doc['tipo_entidad'] ?? '';
+            $idEntidad = (int) ($doc['id_entidad'] ?? 0);
+            if (! $this->entidadExiste($tipo, $idEntidad)) {
+                return $this->response->setJSON(json_response(false, ['message' => 'Recurso no encontrado']));
+            }
+            $path = WRITEPATH . 'uploads/documentos/' . $doc['tipo_entidad'] . '/' . $doc['id_entidad'] . '/' . $doc['nombre_archivo'];
+            if (is_file($path)) {
+                @unlink($path);
+            }
+            $model->delete($id);
+            return $this->response->setJSON(json_response(true, ['message' => 'Documento eliminado']));
+        } catch (\Throwable $e) {
+            return $this->response->setJSON(json_response(false, ['message' => 'Error al eliminar documento: ' . $e->getMessage()]));
         }
-        $tipo = $doc['tipo_entidad'] ?? '';
-        $idEntidad = (int) ($doc['id_entidad'] ?? 0);
-        if (! $this->entidadExiste($tipo, $idEntidad)) {
-            return $this->response->setJSON(json_response(false, ['message' => 'Recurso no encontrado']));
-        }
-        $path = WRITEPATH . 'uploads/documentos/' . $doc['tipo_entidad'] . '/' . $doc['id_entidad'] . '/' . $doc['nombre_archivo'];
-        if (is_file($path)) {
-            @unlink($path);
-        }
-        $model->delete($id);
-        return $this->response->setJSON(json_response(true, ['message' => 'Documento eliminado']));
     }
 }

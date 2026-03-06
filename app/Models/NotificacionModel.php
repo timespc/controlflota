@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -76,7 +77,7 @@ class NotificacionModel extends BaseModel
      * Si $tiposFiltro no está vacío, solo cuenta notificaciones de esos tipos (respeta config push).
      * Si $tiposFiltro es vacío (usuario sin ningún tipo activo), devuelve 0.
      */
-    public function contarNoLeidas(int $idAdmin, array $tiposFiltro = null): int
+    public function contarNoLeidas(int $idAdmin, ?array $tiposFiltro = null): int
     {
         if ($tiposFiltro !== null && $tiposFiltro === []) {
             return 0;
@@ -100,7 +101,7 @@ class NotificacionModel extends BaseModel
      * Si $tiposFiltro no está vacío, solo considera notificaciones de esos tipos.
      * Si $tiposFiltro es vacío (usuario sin ningún tipo activo), devuelve null.
      */
-    public function ultimaNoLeida(int $idAdmin, array $tiposFiltro = null): ?array
+    public function ultimaNoLeida(int $idAdmin, ?array $tiposFiltro = null): ?array
     {
         if ($tiposFiltro !== null && $tiposFiltro === []) {
             return null;

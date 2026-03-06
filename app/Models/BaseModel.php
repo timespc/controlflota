@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -51,15 +52,13 @@ class BaseModel extends Model
 
     public function store(array $data)
     {
-        if(array_key_exists('id', $data) && !empty($data['id'])) {
-            // Actualizar
-            $id = $data['id'];
-            unset($data['id']);
+        $pk = $this->primaryKey;
+        if (array_key_exists($pk, $data) && ! empty($data[$pk])) {
+            $id = $data[$pk];
+            unset($data[$pk]);
             return $this->update($id, $data);
-        } else {
-            // Crear
-            return $this->insert($data);
         }
+        return $this->insert($data);
     }
 
     public function destroy(int $id, bool $purge = false)

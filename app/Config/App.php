@@ -32,7 +32,7 @@ class App extends BaseConfig
 
     public string $charset = 'UTF-8';
 
-    public bool $forceGlobalSecureRequests = false;
+    public bool $forceGlobalSecureRequests = false; // env('app.forceGlobalSecureRequests') — set to true in production .env
 
     public string $sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler';
 
@@ -46,7 +46,7 @@ class App extends BaseConfig
 
     public int $sessionTimeToUpdate = 300;
 
-    public bool $sessionRegenerateDestroy = false;
+    public bool $sessionRegenerateDestroy = false; // env('app.sessionRegenerateDestroy') — set to true in production .env
 
     public string $cookiePrefix = '';
 
